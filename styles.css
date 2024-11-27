@@ -1,0 +1,60 @@
+/* 整体页面样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e1f1ff; /* 淡蓝色背景，类似天空的浅蓝色，作为整个页面的底色 */
+}
+
+/* 头部样式（可放标题等） */
+header {
+    background-color: #004085; /* 深蓝色，用于头部背景，显得沉稳、突出重点 */
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 导航栏样式 */
+nav {
+    background-color: #0056b3; /* 稍浅一点的深蓝色，作为导航栏背景 */
+    overflow: hidden;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #0069d9; /* 导航栏链接鼠标悬停时的颜色，加深一点的蓝色，增强交互感 */
+}
+
+/* 主要内容区域样式 */
+section {
+    padding: 20px;
+    margin: 20px;
+}
+
+/* 卡片样式 */
+.card {
+    background-color: #cce5ff; /* 卡片主体的浅蓝色，比较柔和，区分于背景又相协调 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* 页脚样式 */
+footer {
+    background-color: #004085; /* 与头部一致的深蓝色，保持整体的呼应和统一 */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

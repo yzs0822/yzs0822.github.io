@@ -1,235 +1,142 @@
 <!DOCTYPE html>
-<html xml:lang="en">
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>教师节快乐</title>
-    <link type="text/css" rel="stylesheet" href="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/default.css">
-    <script type="text/javascript" src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/jquery.min.js"></script>
-    <script type="text/javascript" src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/jscex.min.js"></script>
-    <script type="text/javascript" src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/jscex-parser.js"></script>
-    <script type="text/javascript" src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/jscex-jit.js"></script>
-    <script type="text/javascript" src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/jscex-builderbase.min.js"></script>
-    <script type="text/javascript" src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/jscex-async.min.js"></script>
-    <script type="text/javascript" src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/jscex-async-powerpack.min.js"></script>
-    <script type="text/javascript" src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/functions.js" charset="utf-8"></script>
-    <script type="text/javascript" src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/love.js" charset="utf-8"></script>
-    
-    <style type="text/css">
-        <!--
-        .STYLE1 {
-            color: #666666
-        }
-
-        #logo {
-            position: absolute;
-            top: 40px;
-            width: 80px;
-            height: 88px;
-            opacity: 0;
-            transition: opacity 2s;
-        }
-
-        #code {
-            margin-top: 100px;
-        }
-
-        -->
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扬帆半月刊 网页版</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div id="main">
-        <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a
-                href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a
-                href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
-        <div id="wrap">
-            <img src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/logo.png" alt="" id="logo">
-            <div id="text">
-                <div id="code">
-                    <font color="#FF0000"> 
-                        <span class="say">&teacher</span><br><br>
-                        <span class="say">&content</span><br><br>
-                        <span class="say"><span class="space"></span>&student</span>
-                    </font>
-                </div>
-            </div>
-            <div id="clock-box">
-                <span class="STYLE1"></span>
-                <font color="#33CC00">&time</font>
-                <span class="STYLE1">已经是……</span>
-                <div id="clock"></div>
-            </div>
-            <canvas id="canvas" width="1100" height="680"></canvas>
+    <!-- 头部 -->
+    <header>
+        <h1>班级报纸</h1>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+        <a href="#">热搜榜</a>
+        <a href="#">榜样的力量——班级专访</a>
+        <a href="#">作文园地</a>
+        <a href="#">小组积分榜</a>
+        <a herf="#">周目标</a>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <section>
+        <div class="card">
+            <h2>热搜榜</h2>
+            <h3>🔥Top1:我们班与六（3）班重赛落幕，3 : 1 定格精彩瞬间</h3>
+            <p>近日，六年级班级足球赛迎来了一场重赛，对阵双方正是我们班和六（3）班。这场重赛可谓是吸引了众多师生的目光，双方球员都怀揣着必胜的决心踏上绿茵场，为大家奉献了一场扣人心弦的精彩较量，最终我们班以 3 : 1 的比分战胜六（3）班，赢得了这场比赛。</p>
+<h4>赛前氛围：剑拔弩张，斗志昂扬</h4>
+<p>早在比赛开始前，校园里就弥漫着紧张又热烈的气氛。我们班和六（3）班的同学们纷纷为自己班级的足球队加油助威，制作了精美的加油手牌，上面写满了鼓励的话语；画满了所有球员的黑板。 此次重赛是因为与六（2）班的比分都是2:5，学校组织了这场重赛。正因如此，双方都想要在这场重赛中证明自己班级的实力。</p>
+<h4>比赛进程：跌宕起伏，精彩纷呈</h4>
+<p>随着裁判的一声哨响，比赛正式拉开帷幕。开场阶段没一会儿，我们班就一下进了一个球，六（3）班也不甘示弱，在重重包围下，进了一个球，但是我们班后面又进了两个球。尽管六（3）班在最后阶段拼尽全力，试图挽回局面，但还是没进一个球，最终，我们班以 3 : 1 的比分赢得了这场重赛的胜利。</p>
+<h4>赛后反响：既有高兴，也有收获</h4>
+<p>
+比赛结束的哨声响起，绿茵场上的双方球员们有的欢呼雀跃，有的则略显失落。我们班的同学们激动地欢呼，都说“万年老二终于保住了”。而六（3）班的同学们脸上带着遗憾，走进了教学楼。
+这场我们班与六（3）班的重赛，不仅为同学们带来了一场精彩绝伦的足球盛宴，更让大家看到了班级凝聚力和体育精神的力量，为校园增添更多的活力与光彩。
+</p>
+<h3>Top2: 班级齐参与，“美丽教室” 评比展风采</h3>
+<h3>Top3: 校园火灾逃生演练，为生命筑牢 “防火墙”</h3>
+<h3>Top4: 扬帆起航！班级编辑部正式成立助力班级风采展现</h3>
+        </div>
+        <div class="card">
+            <h2>榜样的力量——班级专访</h2>
+            <h3>徐梓喻：小学田径生涯：苦乐交织中的坚持与热爱
+ 采访者：戴琴</h3>
+
+            <p>Q:对于你获比赛获得了这么好的成绩，你是激动、开心还是平静呢？</p>
+<p>A:激动。</p>
+<p>Q:很多人都好奇你是怎么获得那么好的成绩的。你进入田径队没有其他同学时间长，身高没有潘同学那么高，但你仍然获得那么好的成绩，这是为什么呢？
+</p>
+<p>
+A:那要多靠平时的努力，虽然我没有其他同学进入田径队早，但是我付出的努力比他们的要多很多。虽然我个子很小，但是小也有好处。不，应该说不是都是坏处，那可以让我在跑步时更加灵活。</p><p>
+Q:对于你小学的整个田径生涯，你觉得你是甜还是苦，还是用又甜又苦来形容？</p><p>
+A:又苦又甜。在训练的时候，我们经常会被别人的钉鞋给划到脚。这个时候，我们会特别的痛。然后平时跑不好，老师要让我们继续的练，这个特别的苦。但是甜也有，当我们比赛获得名次的时候，我们会欢呼的，那时候就特别甜。</p><p>
+Q:那如果你这次田径比赛没有获得这么好的成绩，你还会继续热爱跑步？</p><p>
+A:那肯定会跑的。跑步是我的一种爱好，我不能半途而废。那我的前面的这个努力有什么用呢？</p><p>
+Q:在你的训练中想到过放弃吗？那你又是因为什么而坚持下来的呢？
+A:那肯定想过，在训练特别苦的时候，自然而然的就会想放弃。但是，黄老师一次次让我们坚持下来，说只要我们这次坚持下来，那以后也不会再有困难，跑的更加轻松，所以只要我们坚持下来了，就不会想到放弃这个词儿。</p><h3>何轩逸：热爱与坚持：小学足球生涯及未来展望
+ 采访者：庄曹宇</h3>
+<p>Q:请问你为什么要坚持练习足球？</p><p>
+A:因为我十分热爱这项运动。</p><p>
+Q:在训练时有没有想过放弃？</p><p>
+A:没有，因为过程虽然十分艰辛，但是努力之后的成果让我觉得以前那些再苦再累都不算什么了。</p><p>
+Q:你在小学足球生涯有什么令你难忘的事情？</p><p>
+A:在班级足球赛时潘沈文守门时扑球出现了失误，让我们又变回了“万年老二”。</p><p>
+Q:小学的足球生涯已经结束，以后你还会继续坚持足球吗？</p><p>
+A:肯定会的，相信在小学六年的努力与积累都会化为我继续攀登得阶梯。</p><h3>杨卓燊：班报故事：设想、担当与制作挑战
+ 采访者：戴柴可心</h3>
+<p>Q:你想象中的班报或对班报的设想？</p><p>
+A:能让家长、同学更了解班级事情，也能让大家学习好作文等。</p><p>
+Q:你当上主编时心情是怎样的？</p><p>
+A:当然是非常高兴啊，43票！想着能为班级付出一份力，感到非常高兴。</p><p>
+Q:如果很艰难，你会放弃吗？</p><p>
+A:不会，虽然第一期可能要花很多时间，但后面就非常轻松了。</p><p>
+Q:你都是怎么制作班报的？</p><p>
+A:把美工的排好的版排好，插图网上实在没有就用AI画图，再用PS处理一下放上去，再把文字写上。</p><p>
+Q:班报中哪一点对你来说有些难？</p><p>
+A:当然是排版，这个要花很多时间的，可能集合一次都搞不完，其他的好办多了。</p>
+
+
+
+
+
+        </div>
+<div class="card">
+            <h2>作文园地</h2>
+            <h3>冬日街头 杨卓燊
+</h3>
+            <p>气温骤降，呼啸的西北风吹走了行道树的零星叶子，吹落了菊花的金黄花瓣，吹来了纷纷扬扬的鹅毛大雪。</p><p>
+“这么好的一次机会，怎么能放了它呢？”一个满脸胡子的彪形大汉，正撑开麻袋围堵一只小狗，陆天生气了，他不禁想起妈妈说有人会把狗杀了卖狗肉这件事情。</p><p>
+“抓狗有什么好看的，走走走！”这个彪形大汉见人越来越多，竟动手驱赶大家，还一把推开了陆天。陆天一脸惊讶，心中的正义感让他坚定地往前迈了一步，厉声质问道：“你要干什么？”大汉扫了一眼陆天，看到他只是一个小学生，就轻蔑地哼了一声，冷冷地道：“你算什么东西？这是你的狗吗？不是就闪开！”“不许伤害它！”陆天瞪大眼睛，他的心仿佛有两个小人在吵架，一个小人说：“别多管闲事，赶快回家做作业！小心被老妈骂，而且他还是个彪形大汉。”另一个小人则鼓励他：“不能退步，这个人一看就不是什么好人，就是卖狗肉、杀狗的！如果把小狗给他，他就会拿回去杀掉卖出去！”</p><p>
+“这只小流浪狗，动物救助站会负责的。”就在这个时候，徐明叔叔上前说道。徐明叔叔是街道动物救助站的志愿者。“你说是救助站的就是救助站的了吗？谁信啊！”大汉还是不依不饶。徐明亮出自己的证件，并说道：“狗也是生命，我们绝不应许随便一个人随意伤害小动物！”“说的好！”“说的妙！”周围的人群里瞬间响起了一阵阵掌声。彪形大汉见捞不到好处，于是灰溜溜地离开了。“谢谢徐叔叔！”陆天高兴地眼泪都要流出来了。徐明笑着说：“你做的很好！双休日你可以来救助站看一看它哦！”</p><p>
+雪花纷纷扬扬落下来，给大地盖上了雪白、厚厚的一层棉被。这城市的一角，也在“棉被”的覆盖下，变得温暖起来。
+
+</p>
+<div class="card">
+            <h2>热搜榜</h2>
+            <h3>🔥Top1:我们班与六（3）班重赛落幕，3 : 1 定格精彩瞬间</h3>
+            <p>近日，六年级班级足球赛迎来了一场重赛，对阵双方正是我们班和六（3）班。这场重赛可谓是吸引了众多师生的目光，双方球员都怀揣着必胜的决心踏上绿茵场，为大家奉献了一场扣人心弦的精彩较量，最终我们班以 3 : 1 的比分战胜六（3）班，赢得了这场比赛。</p>
+<h4>赛前氛围：剑拔弩张，斗志昂扬</h4>
+<p>早在比赛开始前，校园里就弥漫着紧张又热烈的气氛。我们班和六（3）班的同学们纷纷为自己班级的足球队加油助威，制作了精美的加油手牌，上面写满了鼓励的话语；画满了所有球员的黑板。 此次重赛是因为与六（2）班的比分都是2:5，学校组织了这场重赛。正因如此，双方都想要在这场重赛中证明自己班级的实力。</p>
+<h4>比赛进程：跌宕起伏，精彩纷呈</h4>
+<p>随着裁判的一声哨响，比赛正式拉开帷幕。开场阶段没一会儿，我们班就一下进了一个球，六（3）班也不甘示弱，在重重包围下，进了一个球，但是我们班后面又进了两个球。尽管六（3）班在最后阶段拼尽全力，试图挽回局面，但还是没进一个球，最终，我们班以 3 : 1 的比分赢得了这场重赛的胜利。</p>
+<h4>赛后反响：既有高兴，也有收获</h4>
+<p>
+比赛结束的哨声响起，绿茵场上的双方球员们有的欢呼雀跃，有的则略显失落。我们班的同学们激动地欢呼，都说“万年老二终于保住了”。而六（3）班的同学们脸上带着遗憾，走进了教学楼。
+这场我们班与六（3）班的重赛，不仅为同学们带来了一场精彩绝伦的足球盛宴，更让大家看到了班级凝聚力和体育精神的力量，为校园增添更多的活力与光彩。
+</p>
+<h3>Top2: 班级齐参与，“美丽教室” 评比展风采</h3>
+<h3>Top3: 校园火灾逃生演练，为生命筑牢 “防火墙”</h3>
+<h3>Top4: 扬帆起航！班级编辑部正式成立助力班级风采展现</h3>
+        </div>
+<div class="card">
+            <h2>热搜榜</h2>
+            <h3>🔥Top1:我们班与六（3）班重赛落幕，3 : 1 定格精彩瞬间</h3>
+            <p>近日，六年级班级足球赛迎来了一场重赛，对阵双方正是我们班和六（3）班。这场重赛可谓是吸引了众多师生的目光，双方球员都怀揣着必胜的决心踏上绿茵场，为大家奉献了一场扣人心弦的精彩较量，最终我们班以 3 : 1 的比分战胜六（3）班，赢得了这场比赛。</p>
+<h4>赛前氛围：剑拔弩张，斗志昂扬</h4>
+<p>早在比赛开始前，校园里就弥漫着紧张又热烈的气氛。我们班和六（3）班的同学们纷纷为自己班级的足球队加油助威，制作了精美的加油手牌，上面写满了鼓励的话语；画满了所有球员的黑板。 此次重赛是因为与六（2）班的比分都是2:5，学校组织了这场重赛。正因如此，双方都想要在这场重赛中证明自己班级的实力。</p>
+<h4>比赛进程：跌宕起伏，精彩纷呈</h4>
+<p>随着裁判的一声哨响，比赛正式拉开帷幕。开场阶段没一会儿，我们班就一下进了一个球，六（3）班也不甘示弱，在重重包围下，进了一个球，但是我们班后面又进了两个球。尽管六（3）班在最后阶段拼尽全力，试图挽回局面，但还是没进一个球，最终，我们班以 3 : 1 的比分赢得了这场重赛的胜利。</p>
+<h4>赛后反响：既有高兴，也有收获</h4>
+<p>
+比赛结束的哨声响起，绿茵场上的双方球员们有的欢呼雀跃，有的则略显失落。我们班的同学们激动地欢呼，都说“万年老二终于保住了”。而六（3）班的同学们脸上带着遗憾，走进了教学楼。
+这场我们班与六（3）班的重赛，不仅为同学们带来了一场精彩绝伦的足球盛宴，更让大家看到了班级凝聚力和体育精神的力量，为校园增添更多的活力与光彩。
+</p>
+<h3>Top2: 班级齐参与，“美丽教室” 评比展风采</h3>
+<h3>Top3: 校园火灾逃生演练，为生命筑牢 “防火墙”</h3>
+<h3>Top4: 扬帆起航！班级编辑部正式成立助力班级风采展现</h3>
         </div>
 
-    </div>
+    </section>
 
-    <script>
-    </script>
-
-    <script>
-        (function () {
-            var canvas = $('#canvas');
-
-            if (!canvas[0].getContext) {
-                $("#error").show();
-                return false;
-            }
-
-            var width = canvas.width();
-            var height = canvas.height();
-            canvas.attr("width", width);
-            canvas.attr("height", height);
-            var opts = {
-                seed: {
-                    x: width / 2 - 20,
-                    color: "rgb(190, 26, 37)",
-                    scale: 2
-                },
-                branch: [
-                    [535, 680, 570, 250, 500, 200, 30, 100, [
-                        [540, 500, 455, 417, 340, 400, 13, 100, [
-                            [450, 435, 434, 430, 394, 395, 2, 40]
-                        ]],
-                        [550, 445, 600, 356, 680, 345, 12, 100, [
-                            [578, 400, 648, 409, 661, 426, 3, 80]
-                        ]],
-                        [539, 281, 537, 248, 534, 217, 3, 40],
-                        [546, 397, 413, 247, 328, 244, 9, 80, [
-                            [427, 286, 383, 253, 371, 205, 2, 40],
-                            [498, 345, 435, 315, 395, 330, 4, 60]
-                        ]],
-                        [546, 357, 608, 252, 678, 221, 6, 100, [
-                            [590, 293, 646, 277, 648, 271, 2, 80]
-                        ]]
-                    ]]
-                ],
-                bloom: {
-                    num: 700,
-                    width: 1080,
-                    height: 650,
-                },
-                footer: {
-                    width: 1200,
-                    height: 5,
-                    speed: 10,
-                }
-            }
-
-            var tree = new Tree(canvas[0], width, height, opts);
-            var seed = tree.seed;
-            var foot = tree.footer;
-            var hold = 1;
-
-            canvas.click(function (e) {
-                var offset = canvas.offset(), x, y;
-                x = e.pageX - offset.left;
-                y = e.pageY - offset.top;
-                if (seed.hover(x, y)) {
-                    hold = 0;
-                    canvas.unbind("click");
-                    canvas.unbind("mousemove");
-                    canvas.removeClass('hand');
-                }
-            }).mousemove(function (e) {
-                var offset = canvas.offset(), x, y;
-                x = e.pageX - offset.left;
-                y = e.pageY - offset.top;
-                canvas.toggleClass('hand', seed.hover(x, y));
-            });
-
-            var seedAnimate = eval(Jscex.compile("async", function () {
-                seed.draw();
-                while (hold) {
-                    $await(Jscex.Async.sleep(10));
-                }
-                while (seed.canScale()) {
-                    seed.scale(0.95);
-                    $await(Jscex.Async.sleep(10));
-                }
-                while (seed.canMove()) {
-                    seed.move(0, 2);
-                    foot.draw();
-                    $await(Jscex.Async.sleep(10));
-                }
-            }));
-
-            var growAnimate = eval(Jscex.compile("async", function () {
-                do {
-                    tree.grow();
-                    $await(Jscex.Async.sleep(10));
-                } while (tree.canGrow());
-            }));
-
-            var flowAnimate = eval(Jscex.compile("async", function () {
-                do {
-                    tree.flower(2);
-                    $await(Jscex.Async.sleep(10));
-                } while (tree.canFlower());
-            }));
-
-            var moveAnimate = eval(Jscex.compile("async", function () {
-                tree.snapshot("p1", 240, 0, 610, 680);
-                while (tree.move("p1", 500, 0)) {
-                    foot.draw();
-                    $await(Jscex.Async.sleep(10));
-                }
-                foot.draw();
-                tree.snapshot("p2", 500, 0, 610, 680);
-
-                // 会有闪烁不得意这样做
-                canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-                canvas.css("background", "#ffe");
-                $await(Jscex.Async.sleep(300));
-                canvas.css("background", "none");
-            }));
-
-            var jumpAnimate = eval(Jscex.compile("async", function () {
-                var ctx = tree.ctx;
-                while (true) {
-                    tree.ctx.clearRect(0, 0, width, height);
-                    tree.jump();
-                    foot.draw();
-                    $await(Jscex.Async.sleep(25));
-                }
-            }));
-
-            var textAnimate = eval(Jscex.compile("async", function () {
-                var together = new Date();
-                together.setFullYear(&year,&month,&day); 			//时间年月日
-                together.setHours(0);						//小时	
-                together.setMinutes(0);					//分钟
-                together.setSeconds(0);					//秒前一位
-                together.setMilliseconds(2);				//秒第二位
-                $("#code").show().typewriter();
-                $("#clock-box").fadeIn(500);
-                /* logo 的出现 */
-                var logo = document.getElementById('logo');
-                logo.style.opacity = "1";
-                while (true) {
-                    timeElapse(together);
-                    $await(Jscex.Async.sleep(1000));
-                }
-            }));
-
-            var runAsync = eval(Jscex.compile("async", function () {
-                $await(seedAnimate());
-                $await(growAnimate());
-                $await(flowAnimate());
-                $await(moveAnimate());
-
-                textAnimate().start();
-
-                $await(jumpAnimate());
-            }));
-
-            runAsync().start();
-        })();
-    </script>
-    <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
-    </div>
-    <script type="text/javascript" src="https://html.xiguacity.cn/2023_Jiao_Shi_Jie/playmusic_new.js" charset="utf-8"></script>
+    <!-- 页脚 -->
+    <footer>
+        &copy; 2024 扬帆中队班级编辑部
+    </footer>
 </body>
 
 </html>
