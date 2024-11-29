@@ -3,58 +3,66 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e1f1ff; /* 淡蓝色背景，类似天空的浅蓝色，作为整个页面的底色 */
+    background-color: #0077be; /* 以深蓝色作为大海的颜色，象征广阔与深邃 */
+    color: white; /* 文字颜色设为白色，与背景形成鲜明对比，如同海上的白帆显眼 */
 }
 
-/* 头部样式（可放标题等） */
+/* 头部样式（可放标题等），模拟帆船船头造型 */
 header {
-    background-color: #004085; /* 深蓝色，用于头部背景，显得沉稳、突出重点 */
-    color: white;
+    background-color: #005c99; /* 比背景稍深一点的蓝色，增强层次感，类似船头的深色部分 */
     text-align: center;
     padding: 20px;
+    border-bottom-left-radius: 50%; /* 左下角设置为大弧度圆角，营造船头的形状 */
+    border-bottom-right-radius: 50%; /* 右下角同样设置为大弧度圆角 */
 }
 
-/* 导航栏样式 */
+/* 导航栏样式，像是船身上的甲板纹路 */
 nav {
-    background-color: #0056b3; /* 稍浅一点的深蓝色，作为导航栏背景 */
+    background-color: #0095dd; /* 明亮一点的蓝色，象征活力，如同阳光下的甲板 */
     overflow: hidden;
+    display: flex; /* 使用弹性布局，使导航栏项目排列更整齐 */
+    justify-content: space-around; /* 均匀分布导航栏项目 */
 }
 
 nav a {
-    float: left;
-    display: block;
     color: white;
-    text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
+    padding: 14px 16px;
+    transition: background-color 0.3s ease; /* 添加过渡效果，让交互更平滑 */
 }
 
 nav a:hover {
-    background-color: #0069d9; /* 导航栏链接鼠标悬停时的颜色，加深一点的蓝色，增强交互感 */
+    background-color: #00b0f0; /* 鼠标悬停时颜色变浅，模拟甲板在阳光下的光影变化 */
 }
 
-/* 主要内容区域样式 */
+/* 主要内容区域样式，如同帆船承载的重要部分 */
 section {
     padding: 20px;
     margin: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* 半透明白色背景，模拟帆船主体的朦胧感 */
+    border-radius: 10px; /* 圆角，使区域更柔和 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 阴影，增加立体感，好似帆船的立体效果 */
 }
 
-/* 卡片样式 */
+/* 卡片样式，可想象成帆船上存放的一个个物品盒子 */
 .card {
-    background-color: #cce5ff; /* 卡片主体的浅蓝色，比较柔和，区分于背景又相协调 */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.2); /* 更浅的半透明白色，区分不同板块内容 */
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* 较淡的阴影，增加层次感 */
+    transition: transform 0.3s ease; /* 添加变换过渡效果 */
 }
 
-/* 页脚样式 */
+.card:hover {
+    transform: translateY(-5px); /* 鼠标悬停时卡片微微上浮，增加交互趣味性 */
+}
+
+/* 页脚样式，类似帆船的船尾部分 */
 footer {
-    background-color: #004085; /* 与头部一致的深蓝色，保持整体的呼应和统一 */
-    color: white;
+    background-color: #005c99; /* 与船头颜色呼应，保持整体风格统一 */
     text-align: center;
     padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    border-top-left-radius: 50%; /* 左上角设置为大弧度圆角，模拟船尾形状 */
+    border-top-right-radius: 50%; /* 右上角同样设置为大弧度圆角 */
 }
