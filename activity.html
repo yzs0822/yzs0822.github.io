@@ -104,6 +104,25 @@
                 transform: scale(1);
             }
         }
+
+       .extra-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+       .extra-link a {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+       .extra-link a:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
@@ -130,6 +149,9 @@
                 活动内容：<span id="activity-content"></span>
             </p>
         </div>
+        <div class="extra-link">
+            <a href="your_question_page.html">前往法律知识问答</a>
+        </div>
         <div class="back-link">
             <a href="index.html">返回主页面</a>
         </div>
@@ -147,8 +169,8 @@
             };
         } else if (activityId === '2') {
             activity = {
-                title: '群聊法律知识小竞赛',
-                date: '3.16',
+                title: '法律知识小竞赛',
+                date: '3.25',
                 content: '通过竞赛的方式，增强同学们对群聊法律规定的了解。'
             };
         }

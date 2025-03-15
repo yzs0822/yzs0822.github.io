@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>群聊法律知识问答</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+       .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+       .question {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+       .question h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+       .answer-options {
+            list-style-type: none;
+            padding: 0;
+        }
+
+       .answer-options li {
+            margin-bottom: 10px;
+        }
+
+       .answer-options input[type="radio"] {
+            margin-right: 5px;
+        }
+
+       .submit-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+       .submit-button:hover {
+            background-color: #0056b3;
+        }
+
+       .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+       .result h2 {
+            color: #333;
+        }
+
+       .buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+       .button {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+       .button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>群聊法律知识问答</h1>
+        <div id="questions"></div>
+        <button class="submit-button" onclick="checkAnswers()">提交</button>
+        <div class="result" id="result" style="display:none;">
+            <h2 id="score"></h2>
+            <div class="buttons">
+                <button class="button" onclick="window.location.reload()">重新测试</button>
+                <button class="button" onclick="history.back()">回退</button>
+                <button class="button" onclick="shareResult()">分享</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 题目和答案数组，这里简单示例15道题，可根据law_rules内容修改
+        const questions = [
+            {
+                question: "在群聊中使用暴力语言侮辱他人，可能构成什么罪？",
+                options: ["侮辱罪", "诽谤罪", "侵犯隐私权", "不构成犯罪"],
+                answer: 0
+            },
+            {
+                question: "多次在群聊中恶意刷屏，属于什么行为？",
+                options: ["不文明行为", "违法行为", "正常行为", "道德行为"],
+                answer: 0
+            },
+            // 更多题目
+            {
+                question: "在群聊中传播未经证实的谣言，可能会面临什么后果？",
+                options: ["被警告", "被禁言", "被追究法律责任", "以上都有可能"],
+                answer: 3
+            },
+            {
+                question: "根据群聊规定，发布商业广告需要注意什么？",
+                options: ["提前通知管理员", "不能频繁发布", "遵守相关法律法规", "以上都是"],
+                answer: 3
+            },
+            {
+                question: "在群聊中泄露他人个人信息，侵犯了他人的什么权利？",
+                options: ["隐私权", "名誉权", "肖像权", "著作权"],
+                answer: 0
+            },
+            {
+                question: "群聊中对他人进行威胁，可能触犯什么法律？",
+                options: ["治安管理处罚法", "刑法", "民法", "以上都有可能"],
+                answer: 3
+            },
+            {
+                question: "以下哪种行为在群聊中不被允许？",
+                options: ["分享学习资料", "宣传正能量", "发布色情内容", "交流学习心得"],
+                answer: 2
+            },
+            {
+                question: "如果对群聊中的处理结果有异议，应该怎么做？",
+                options: ["申诉", "大闹群聊", "退群", "无所谓"],
+                answer: 0
+            },
+            {
+                question: "群聊中冒充他人身份发言，属于什么行为？",
+                options: ["欺诈行为", "恶作剧", "正常行为", "不道德行为"],
+                answer: 0
+            },
+            {
+                question: "故意在群聊中发布虚假中奖信息，属于什么行为？",
+                options: ["诈骗行为", "娱乐行为", "宣传行为", "无所谓行为"],
+                answer: 0
+            },
+            {
+                question: "在群聊中煽动他人进行违法活动，会有什么后果？",
+                options: ["被批评教育", "被追究法律责任", "被罚款", "被警告"],
+                answer: 1
+            },
+            {
+                question: "群聊中发布反动言论，会触犯什么法律？",
+                options: ["刑法", "治安管理处罚法", "两者都有可能", "不触犯法律"],
+                answer: 2
+            },
+            {
+                question: "在群聊中侵犯他人知识产权，需要承担什么责任？",
+                options: ["民事责任", "刑事责任", "行政责任", "以上都有可能"],
+                answer: 3
+            },
+            {
+                question: "群聊中恶意攻击群管理员，可能会受到什么处罚？",
+                options: ["禁言", "移出群聊", "根据情节轻重有不同处罚", "没有处罚"],
+                answer: 2
+            },
+            {
+                question: "根据群聊法，未成年人在群聊中违法需要承担责任吗？",
+                options: ["视情况而定", "不需要", "需要", "只需要家长承担责任"],
+                answer: 0
+            }
+        ];
+
+        let userAnswers = [];
+
+        function displayQuestions() {
+            const questionsDiv = document.getElementById('questions');
+            questions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <h3>${index + 1}. ${question.question}</h3>
+                    <ul class="answer-options">
+                        ${question.options.map((option, optionIndex) => `
+                            <li>
+                                <input type="radio" id="q${index}_${optionIndex}" name="q${index}" value="${optionIndex}">
+                                <label for="q${index}_${optionIndex}">${option}</label>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+                questionsDiv.appendChild(questionDiv);
+            });
+        }
+
+        function checkAnswers() {
+            const resultDiv = document.getElementById('result');
+            let score = 0;
+            questions.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selectedAnswer) {
+                    userAnswers.push(parseInt(selectedAnswer.value));
+                    if (parseInt(selectedAnswer.value) === question.answer) {
+                        score++;
+                    }
+                } else {
+                    userAnswers.push(null);
+                }
+            });
+            document.getElementById('score').textContent = `你的得分是：${score}/${questions.length}`;
+            resultDiv.style.display = 'block';
+        }
+
+        function shareResult() {
+            const score = document.getElementById('score').textContent;
+            const shareText = `我在群聊法律知识问答中得了${score}，快来挑战吧！`;
+            if (navigator.share) {
+                navigator.share({
+                    title: '群聊法律知识问答',
+                    text: shareText,
+                    url: window.location.href
+                })
+               .then(() => console.log('分享成功'))
+               .catch((error) => console.error('分享失败:', error));
+            } else {
+                alert('您的浏览器不支持分享功能');
+            }
+        }
+
+        window.onload = displayQuestions;
+    </script>
+</body>
+
+</html>
