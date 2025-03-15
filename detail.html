@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>违法处理详细信息</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+       .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            color: #666;
+        }
+
+       .action-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+       .action-buttons button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+       .action-buttons button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>违法处理详细信息</h2>
+        <div id="info-section"></div>
+        <div class="action-buttons">
+            <button id="confirm-button">确认处理</button>
+            <button id="review-button">重新审核</button>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const caseId = urlParams.get('case');
+        let detailInfo;
+        if (caseId === '1') {
+            detailInfo = {
+                student: '同学张榆涵',
+                offense: '发送不文明用语，刷屏',
+                punishment: '警告、踢群1天处理'
+            };
+        } else if (caseId === '2') {
+            detailInfo = {
+                student: '同学张榆涵',
+                offense: '申诉',
+                punishment: '警告、踢群1天处理'
+            };
+        } else if (caseId === '3') {
+            detailInfo = {
+                student: '同学王高莹',
+                offense: '发送不文明用语',
+                punishment: '警告处理'
+            };
+        }
+
+        if (detailInfo) {
+            const infoSection = document.getElementById('info-section');
+            infoSection.innerHTML = `
+                <p>涉事同学：${detailInfo.student}</p>
+                <p>违规行为：${detailInfo.offense}</p>
+                <p>处理结果：${detailInfo.punishment}</p>
+            `;
+        }
+
+        const confirmButton = document.getElementById('confirm-button');
+        confirmButton.addEventListener('click', () => {
+            alert('处理成功');
+            const caseInfo = detailInfo.student + '处理成功';
+            const timeline = window.opener.document.getElementById('timeline');
+            const newLi = document.createElement('li');
+            newLi.style.setProperty('--index', timeline.children.length);
+            newLi.innerHTML = `
+                <div class="date">${new Date().toLocaleDateString()}</div>
+                <div class="event">
+                    <h3>处理成功</h3>
+                    <p>${caseInfo}</p>
+                </div>
+            `;
+            timeline.appendChild(newLi);
+            const actionButtons = document.querySelector('.action-buttons');
+            actionButtons.innerHTML = '';
+            // 关闭当前窗口，回到主页面
+            window.close();
+        });
+
+        const reviewButton = document.getElementById('review-button');
+        reviewButton.addEventListener('click', () => {
+            const caseInfo = detailInfo.student + '重新审核';
+            const timeline = window.opener.document.getElementById('timeline');
+            const newLi = document.createElement('li');
+            newLi.style.setProperty('--index', timeline.children.length);
+            newLi.innerHTML = `
+                <div class="date">${new Date().toLocaleDateString()}</div>
+                <div class="event">
+                    <h3>重新审核</h3>
+                    <p>${caseInfo}</p>
+                </div>
+            `;
+            timeline.appendChild(newLi);
+            // 关闭当前窗口，回到主页面
+            window.close();
+        });
+    </script>
+</body>
+
+</html>
