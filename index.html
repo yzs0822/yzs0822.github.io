@@ -11,6 +11,8 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            background-size: cover;
+            background-position: center;
             animation: fadeIn 1s ease-in-out;
         }
 
@@ -24,7 +26,7 @@
         }
 
        .header {
-            background-color: #333;
+            background-color: rgba(51, 51, 51, 0.8);
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -34,7 +36,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             margin-top: 20px;
@@ -104,7 +106,7 @@
        .timeline .event {
             margin-left: 80px;
             padding: 10px;
-            background-color: #f9f9f9;
+            background-color: rgba(249, 249, 249, 0.9);
             border-radius: 5px;
         }
 
@@ -187,8 +189,66 @@
        .activity-timeline .event {
             margin-left: 80px;
             padding: 10px;
-            background-color: #e3f2fd;
+            background-color: rgba(227, 242, 253, 0.9);
             border-radius: 5px;
+        }
+
+       .activity-timeline .event svg {
+            width: 20px;
+            height: 20px;
+            fill: #007BFF;
+            margin-right: 5px;
+        }
+
+       .timeline-search {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+       .timeline-search input {
+            padding: 10px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 20px;
+            width: 300px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+       .timeline-search input:focus {
+            border-color: #007bff;
+        }
+
+       .timeline-search button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+       .timeline-search button:hover {
+            background-color: #0056b3;
+        }
+
+       .toggle-btn {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+       .toggle-btn:hover {
+            background-color: #5a6268;
         }
     </style>
 </head>
@@ -208,7 +268,10 @@
         <p>本平台致力于处理六（1）班群聊中出现的违反规定的行为，维护良好的交流环境。</p>
         <h2>六（1）班群聊违法处理说明</h2>
         <p>当群聊中出现不文明用语、恶意刷屏、传播不良信息等违反群规行为时，管理员将依据相关规定进行处理。处理方式包括警告、禁言、移出群聊等。</p>
-
+        <div class="timeline-search">
+            <input type="text" id="timelineSearchInput" placeholder="搜索时间线事件">
+            <button onclick="searchTimeline()">搜索</button>
+        </div>
         <h2>处理时间线</h2>
         <ul class="timeline" id="timeline">
             <li style="--index: 0;">
@@ -251,7 +314,7 @@
                 <div class="event">
                     <h3>首次处理</h3>
                     <p>同学庄曹宇刷屏被永久踢群处理。</p>
-                    <a href="detail.html?case=4">去处理</a>
+                    <a href="detail.html?case=4&date=3.15&content=同学庄曹宇刷屏被永久踢群处理。">去处理</a>
                 </div>
             </li>
             <li style="--index: 6;">
@@ -287,6 +350,72 @@
             <a href="law_rules.html">查看群聊详细法律规定</a>
         </div>
     </div>
+    <script>
+        function searchTimeline() {
+            const searchText = document.getElementById('timelineSearchInput').value.toLowerCase();
+            const timelineItems = document.querySelectorAll('.timeline li, .activity-timeline li');
+            timelineItems.forEach((item) => {
+                const itemText = item.textContent.toLowerCase();
+                if (itemText.includes(searchText)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        let isTimelineExpanded = true;
+        function toggleTimeline() {
+            const timeline = document.getElementById('timeline');
+            const activityTimeline = document.getElementById('activityTimeline');
+            if (isTimelineExpanded) {
+                timeline.style.display = 'none';
+                activityTimeline.style.display = 'none';
+                document.querySelector('.toggle-btn').textContent = '展开';
+            } else {
+                timeline.style.display = 'block';
+                activityTimeline.style.display = 'block';
+                document.querySelector('.toggle-btn').textContent = '折叠';
+            }
+            isTimelineExpanded = !isTimelineExpanded;
+        }
+
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const processed = urlParams.get('processed');
+            if (processed === 'true') {
+                const date = urlParams.get('date');
+                const content = urlParams.get('content');
+
+                const newLi = document.createElement('li');
+                newLi.style.setProperty('--index', '');
+                const newDateDiv = document.createElement('div');
+                newDateDiv.className = 'date';
+                newDateDiv.textContent = new Date().toLocaleDateString().replace(/\//g, '.').split('.').slice(1).join('.');
+                const newEventDiv = document.createElement('div');
+                newEventDiv.className = 'event';
+                const newH3 = document.createElement('h3');
+                newH3.textContent = '处理成功';
+                const newP = document.createElement('p');
+                newP.textContent = content;
+
+                newEventDiv.appendChild(newH3);
+                newEventDiv.appendChild(newP);
+                newLi.appendChild(newDateDiv);
+                newLi.appendChild(newEventDiv);
+
+                const timeline = document.getElementById('timeline');
+                timeline.appendChild(newLi);
+
+                const links = document.querySelectorAll('.timeline .event a');
+                links.forEach((link) => {
+                    if (link.href.includes(`content=${encodeURIComponent(content)}`)) {
+                        link.parentNode.removeChild(link);
+                    }
+                });
+            }
+        };
+    </script>
 </body>
 
 </html>
