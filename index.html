@@ -415,6 +415,25 @@
                 });
             }
         };
+        const urlParams = new URLSearchParams(window.location.search);
+        const date = urlParams.get('date');
+        const content = urlParams.get('content');
+        const student = urlParams.get('student');
+
+        document.getElementById('date').textContent = `日期: ${date}`;
+        document.getElementById('content').textContent = `内容: ${content}`;
+
+        function confirmProcessing() {
+            const baseUrl = window.location.origin + window.location.pathname.replace('detail.html', 'index.html');
+            const queryParams = `?processed=true&date=${date}&content=${encodeURIComponent(content)}`;
+            window.location.href = baseUrl + queryParams;
+        }
+
+        function appeal() {
+            const baseUrl = window.location.origin + window.location.pathname.replace('detail.html', 'index.html');
+            const queryParams = `?reappealed=true&date=${date}&content=${encodeURIComponent(content)}&student=${encodeURIComponent(student)}`;
+            window.location.href = baseUrl + queryParams;
+        }
     </script>
 </body>
 
