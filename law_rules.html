@@ -18,13 +18,13 @@
             color: #333;
         }
 
-        .container {
+       .container {
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
@@ -35,17 +35,17 @@
             border-bottom: 2px solid #dee2e6;
         }
 
-        .section {
+       .section {
             margin-bottom: 30px;
         }
 
-        .section h3 {
+       .section h3 {
             color: #007bff;
             margin-bottom: 10px;
             font-size: 1.2rem;
         }
 
-        .law-item {
+       .law-item {
             margin-bottom: 20px;
             padding: 15px;
             background-color: #f8f9fa;
@@ -53,38 +53,83 @@
             border-radius: 5px;
         }
 
-        .law-item h4 {
+       .law-item:hover {
+            background-color: #e9f3fc;
+        }
+
+       .law-item h4 {
             color: #212529;
             margin-bottom: 5px;
         }
 
-        .law-item p {
+       .law-item p {
             margin: 5px 0;
             color: #495057;
         }
 
-        .law-item ol {
+       .law-item ol {
             padding-left: 20px;
             margin-top: 5px;
         }
 
-        .law-item ol li {
+       .law-item ol li {
             margin-bottom: 3px;
         }
 
-        .note {
+       .note {
             margin-top: 20px;
             padding: 15px;
             background-color: #fff3cd;
             border-radius: 5px;
             color: #856404;
         }
+
+       .search-group {
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+       .search-group input {
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 20px 0 0 20px;
+            width: 300px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+       .search-group input:focus {
+            border-color: #007bff;
+        }
+
+       .search-group button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+       .search-group button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>江寺小学六（1）班群聊法</h1>
-        
+        <div class="search-group">
+            <input type="text" id="searchInput" placeholder="搜索法律条款">
+            <button onclick="searchLaws()">搜索</button>
+        </div>
+
         <div class="section">
             <h3>前言</h3>
             <p>因群聊需要与群聊现状调查，部分同学未做到要求，同学们决定，根据宪法与同学讨论，制定本法，并强制执行。</p>
@@ -426,5 +471,20 @@
             <p>注：本群聊法依据《中华人民共和国宪法》《中华人民共和国刑法》《中华人民共和国治安管理处罚法》等法律法规制定，解释权归六（1）班全体同学所有。</p>
         </div>
     </div>
+    <script>
+        function searchLaws() {
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const lawItems = document.querySelectorAll('.law-item');
+            lawItems.forEach((item) => {
+                const itemText = item.textContent.toLowerCase();
+                if (itemText.includes(searchText)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+    </script>
 </body>
 </html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动详情</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+       .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            margin-top: 50px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+       .activity-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+       .activity-info p {
+            margin: 15px 0;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+       .activity-info p svg {
+            width: 20px;
+            height: 20px;
+            fill: #007BFF;
+            margin-right: 5px;
+        }
+
+       .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+       .back-link a {
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+       .back-link a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+       .icon-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+       .icon-container svg {
+            width: 80px;
+            height: 80px;
+            fill: #007BFF;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17h-2v-2h2v2zm0-4h-2v-6h2v6zm4 4h-2v-2h2v2zm0-4h-2v-6h2v6z" />
+            </svg>
+        </div>
+        <h2>活动详情</h2>
+        <div class="activity-info">
+            <h3 id="activity-title"></h3>
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17h-2v-2h2v2zm0-4h-2v-6h2v6zm4 4h-2v-2h2v2zm0-4h-2v-6h2v6z" />
+                </svg>
+                活动时间：<span id="activity-date"></span>
+            </p>
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17h-2v-2h2v2zm0-4h-2v-6h2v6zm4 4h-2v-2h2v2zm0-4h-2v-6h2v6z" />
+                </svg>
+                活动内容：<span id="activity-content"></span>
+            </p>
+        </div>
+        <div class="back-link">
+            <a href="index.html">返回主页面</a>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const activityId = urlParams.get('id');
+
+        let activity;
+        if (activityId === '1') {
+            activity = {
+                title: '群聊文明宣传活动',
+                date: '3.18',
+                content: '组织同学们学习群聊文明规范，发放宣传手册。'
+            };
+        } else if (activityId === '2') {
+            activity = {
+                title: '群聊法律知识小竞赛',
+                date: '3.16',
+                content: '通过竞赛的方式，增强同学们对群聊法律规定的了解。'
+            };
+        }
+
+        if (activity) {
+            document.getElementById('activity-title').textContent = activity.title;
+            document.getElementById('activity-date').textContent = activity.date;
+            document.getElementById('activity-content').textContent = activity.content;
+        }
+    </script>
+</body>
+
+</html>
