@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>六（1）班群聊违法处理</title>
+    <title>投诉违规</title>
     <style>
         /* 全局样式 */
         body {
@@ -291,168 +291,58 @@
             fill: #ff6b6b;
             margin-right: 10px;
         }
+        .back-button {
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+       .back-button:hover {
+            background-color: #e74c3c;
+        }
+
     </style>
 </head>
 
 <body>
-    <!-- 顶部导航栏 -->
     <nav class="navbar">
         <a href="#" class="navbar-logo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10C22 6.48 17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-11h-2v6h2v-6zm-1-3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
-                      fill="white" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-11h-2v6h2v-6zm-1-3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                      fill="none" stroke="#333" stroke-width="2" />
+                <path d="M12 14L16 10L12 6L8 10L12 14Z" fill="#333" />
             </svg>
             六（1）班群聊违法处理平台
         </a>
         <ul class="navbar-menu">
-            <li>
-                <a href="#">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 13h1v7c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h1a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1zm17 7H4v-7h16v7zM12 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
-                              fill="#333" />
-                    </svg>
-                    主页
-                </a>
-            </li>
-            <li>
-                <a href="timeline.html">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-11h-2v6h2v-6zm-1-3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
-                              fill="#333" />
-                    </svg>
-                    处理记录
-                </a>
-            </li>
-            <li>
-                <a href="activity.html">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-11h-2v6h2v-6zm-1-3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
-                              fill="#333" />
-                    </svg>
-                    活动信息
-                </a>
-            </li>
-            <li>
-                <a href="complaint.html">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-11h-2v6h2v-6zm-1-3c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
-                              fill="#333" />
-                    </svg>
-                    投诉违规
-                </a>
-            </li>
+            <li><a href="timeline.html">处理记录</a></li>
+            <li><a href="complaint.html">投诉违规</a></li>
         </ul>
     </nav>
-
     <div class="container">
-        <h2>主页介绍</h2>
-        <p>本平台致力于处理六（1）班群聊中出现的违反规定的行为，维护良好的交流环境。</p>
-        <h2>六（1）班群聊违法处理说明</h2>
-        <p>当群聊中出现不文明用语、恶意刷屏、传播不良信息等违反群规行为时，管理员将依据相关规定进行处理。处理方式包括警告、禁言、移出群聊等。</p>
-        <h2>处理时间线(更多请在处理记录查看)</h2>
-        <ul class="timeline" id="timeline">
-            <li style="--index: 0;">
-                <div class="date">3.12</div>
-                <div class="event">
-                    <h3>首次处理</h3>
-                    <p>同学张榆涵因发送不文明用语和刷屏被警告，踢群1天处理。</p>
-                </div>
-            </li>
-            <li style="--index: 1;">
-                <div class="date">3.14</div>
-                <div class="event">
-                    <h3>申诉</h3>
-                    <p>同学张榆涵申诉，法官坚持一审处理。</p>
-                </div>
-            </li>
-                    
-        </ul>
-
-        <h2>活动时间线</h2>
-        <ul class="activity-timeline">
-            <li style="--index: 1;">
-                <div class="date">3.16</div>
-                <div class="event">
-                    <h3>法律知识小竞赛</h3>
-                    <p>通过竞赛的方式，增强同学们对群聊法律规定的了解。</p>
-                    <a href="activity.html?id=2">查看详情</a>
-                </div>
-            </li>
-        </ul>
-
         <h2>投诉违规</h2>
-        
-        <div class="law-link">
-            <a href="law_rules.html">查看群聊详细法律规定</a>
-        </div>
+        <form class="complaint-form">
+            <label for="complainant">投诉人：</label>
+            <input type="text" id="complainant" required>
+            <label for="violationType">违规类型：</label>
+            <select id="violationType" required>
+                <option value="badLanguage">不文明用语</option>
+                <option value="spam">恶意刷屏</option>
+                <option value="badInfo">传播不良信息</option>
+            </select>
+            <label for="description">违规描述：</label>
+            <textarea id="description" required></textarea>
+            <button type="submit">提交投诉</button>
+        </form>
+        <button class="back-button" onclick="goBack()">返回</button>
     </div>
     <script>
-        function searchTimeline() {
-            const searchText = document.getElementById('timelineSearchInput').value.toLowerCase();
-            const timelineItems = document.querySelectorAll('.timeline li, .activity-timeline li');
-            timelineItems.forEach((item) => {
-                const itemText = item.textContent.toLowerCase();
-                if (itemText.includes(searchText)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        let isTimelineExpanded = true;
-        function toggleTimeline() {
-            const timeline = document.getElementById('timeline');
-            const activityTimeline = document.getElementById('activityTimeline');
-            if (isTimelineExpanded) {
-                timeline.style.display = 'none';
-                activityTimeline.style.display = 'none';
-                document.querySelector('.toggle-btn').textContent = '展开';
-            } else {
-                timeline.style.display = 'block';
-                activityTimeline.style.display = 'block';
-                document.querySelector('.toggle-btn').textContent = '折叠';
-            }
-            isTimelineExpanded =!isTimelineExpanded;
-        }
-
-        document.getElementById('complaintForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const complainant = document.getElementById('complainant').value;
-            const violationType = document.getElementById('violationType').value;
-            const description = document.getElementById('description').value;
-            // 模拟发送数据到服务器（这里只是示例，实际需服务器端处理）
-            const formData = {
-                complainant: complainant,
-                violationType: violationType,
-                description: description
-            };
-            fetch('send_email.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-              .then(response => response.json())
-              .then(data => {
-                    if (data.success) {
-                        showNotification();
-                    } else {
-                        console.log('提交失败');
-                    }
-                })
-              .catch(error => console.error('Error:', error));
-        });
-
-        function showNotification() {
-            const notification = document.getElementById('notification');
-            notification.style.opacity = '1';
-            notification.style.transform = 'translateY(0)';
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                notification.style.transform = 'translateY(-20px)';
-            }, 3000);
+        function goBack() {
+            window.history.back();
         }
     </script>
 </body>
