@@ -5,97 +5,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>处理详情</title>
-    <link rel="icon" type="image/x-icon" href="icon.svg">
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
-            padding: 20px;
         }
 
-       .container {
-            max-width: 600px;
+      .container {
+            max-width: 800px;
             margin: 0 auto;
-            background-color: white;
             padding: 20px;
-            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 20px;
         }
 
         h2 {
             color: #333;
-            text-align: center;
         }
 
-       .detail-info {
-            margin-bottom: 20px;
+        p {
+            color: #666;
         }
 
-       .detail-info p {
-            margin: 5px 0;
+      .button-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
         }
 
-       .confirm-btn {
-            background-color: #007BFF;
+      .qr-button {
+            background-color: #999;
             color: white;
             border: none;
             padding: 10px 20px;
             border-radius: 3px;
             cursor: pointer;
-            display: block;
-            margin: 0 auto;
         }
 
-       .confirm-btn:hover {
-            background-color: #0056b3;
-        }
-
-       .reappeal-btn {
-            background-color: #dc3545;
+      .pdf-button {
+            background-color: #ff6b6b;
             color: white;
             border: none;
             padding: 10px 20px;
             border-radius: 3px;
             cursor: pointer;
-            display: block;
-            margin: 10px auto 0;
         }
 
-       .reappeal-btn:hover {
-            background-color: #c82333;
+      .qr-button:hover {
+            background-color: #777;
+        }
+
+      .pdf-button:hover {
+            background-color: #e74c3c;
+        }
+
+      .qr-code-container {
+            margin-top: 20px;
+        }
+
+      .process-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+      .reappeal-button {
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+      .process-button:hover {
+            background-color: #218838;
+        }
+
+      .reappeal-button:hover {
+            background-color: #138496;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
     <div class="container">
         <h2>处理详情</h2>
-        <div class="detail-info">
-            <p id="date"></p>
-            <p id="content"></p>
+        <p id="studentName">同学姓名：<span></span></p>
+        <p id="date">日期：<span></span></p>
+        <p id="content">处理内容：<span></span></p>
+        <div class="button-container">
+            <button class="qr-button" onclick="generateQRCode()">生成二维码</button>
+            <button class="pdf-button" onclick="generatePDF()">生成 PDF</button>
+            <button class="process-button" onclick="processCase()">处理</button>
+            <button class="reappeal-button" onclick="reappealCase()">重新审核</button>
         </div>
-        <button class="confirm-btn" onclick="confirmProcessing()">确认处理</button>
-        <button class="reappeal-btn" onclick="reappeal()">重新申诉</button>
+        <div class="qr-code-container" id="qrCode"></div>
     </div>
     <script>
+        // 获取 URL 参数
         const urlParams = new URLSearchParams(window.location.search);
+        const student = urlParams.get('student');
         const date = urlParams.get('date');
         const content = urlParams.get('content');
-        const student = urlParams.get('student');
 
-        document.getElementById('date').textContent = `日期: ${date}`;
-        document.getElementById('content').textContent = `内容: ${content}`;
+        // 填充详情信息
+        document.getElementById('studentName').querySelector('span').textContent = student;
+        document.getElementById('date').querySelector('span').textContent = date;
+        document.getElementById('content').querySelector('span').textContent = content;
 
-        function confirmProcessing() {
-            const baseUrl = window.location.origin + window.location.pathname.replace('detail.html', 'index.html');
-            const queryParams = `?processed=true&date=${date}&content=${encodeURIComponent(content)}`;
-            window.location.href = baseUrl + queryParams;
+        // 生成 QR 码
+        function generateQRCode() {
+            const qrData = `学生：${student}，日期：${date}，处理内容：${content}`;
+            new QRious({
+                element: document.getElementById('qrCode'),
+                value: qrData,
+                size: 200
+            });
         }
 
-        function appeal() {
-            const baseUrl = window.location.origin + window.location.pathname.replace('detail.html', 'index.html');
-            const queryParams = `?reappealed=true&date=${date}&content=${encodeURIComponent(content)}&student=${encodeURIComponent(student)}`;
-            window.location.href = baseUrl + queryParams;
+        // 生成 PDF
+        function generatePDF() {
+            const doc = new jsPDF();
+            doc.setFontSize(18);
+            doc.text('处理详情', 10, 10);
+            doc.setFontSize(12);
+            doc.text(`学生：${student}`, 10, 25);
+            doc.text(`日期：${date}`, 10, 35);
+            doc.text(`处理内容：${content}`, 10, 45);
+            doc.save('处理详情.pdf');
+        }
+
+        // 处理按钮点击事件
+        function processCase() {
+            // 这里可以添加处理逻辑，例如发送请求到服务器
+            alert(`已处理：${student} - ${content}`);
+        }
+
+        // 重新审核按钮点击事件
+        function reappealCase() {
+            // 这里可以添加重新审核逻辑，例如发送请求到服务器
+            alert(`已重新审核：${student} - ${content}`);
         }
     </script>
 </body>
