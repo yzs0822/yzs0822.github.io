@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>活动详情</title>
+    <link rel="icon" type="image/x-icon" href="icon.svg">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -150,7 +151,7 @@
             </p>
         </div>
         <div class="extra-link">
-            <a href="your_question_page.html">前往法律知识问答</a>
+            <a id="questionLink" href="your_question_page.html" style="display: none;">前往法律知识问答</a>
         </div>
         <div class="back-link">
             <a href="index.html">返回主页面</a>
@@ -170,7 +171,7 @@
         } else if (activityId === '2') {
             activity = {
                 title: '法律知识小竞赛',
-                date: '3.25',
+                date: '3.16',
                 content: '通过竞赛的方式，增强同学们对群聊法律规定的了解。'
             };
         }
@@ -179,6 +180,14 @@
             document.getElementById('activity-title').textContent = activity.title;
             document.getElementById('activity-date').textContent = activity.date;
             document.getElementById('activity-content').textContent = activity.content;
+        }
+
+        // 获取当前日期
+        const now = new Date();
+        const targetDate = new Date(2025, 2, 16); // 月份是0-11，所以3月是2
+
+        if (now >= targetDate) {
+            document.getElementById('questionLink').style.display = 'inline-block';
         }
     </script>
 </body>

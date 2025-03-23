@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>六（1）班群聊违法处理</title>
+    <link rel="icon" type="image/x-icon" href="icon.svg">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* 全局样式 */
         body {
@@ -291,6 +293,12 @@
             fill: #ff6b6b;
             margin-right: 10px;
         }
+.chart-container {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(249, 249, 249, 0.9);
+    border-radius: 5px;
+}
     </style>
 </head>
 
@@ -349,7 +357,18 @@
         <p>本平台致力于处理六（1）班群聊中出现的违反规定的行为，维护良好的交流环境。</p>
         <h2>六（1）班群聊违法处理说明</h2>
         <p>当群聊中出现不文明用语、恶意刷屏、传播不良信息等违反群规行为时，管理员将依据相关规定进行处理。处理方式包括警告、禁言、移出群聊等。</p>
-        <h2>处理时间线(更多请在处理记录查看)</h2>
+<div class="container">
+    <!-- 其他内容保持不变 -->
+
+    <!-- 新增饼图部分 -->
+    <h2>违规类型统计</h2>
+    <div class="chart-container">
+        <canvas id="violationChart" style="max-width: 600px; margin: 0 auto;"></canvas>
+    </div>
+
+    <!-- 其他内容保持不变 -->
+</div>
+                <h2>处理时间线(更多请在处理记录查看)</h2>
         <ul class="timeline" id="timeline">
             <li style="--index: 0;">
                 <div class="date">3.12</div>
@@ -386,6 +405,44 @@
             <a href="law_rules.html">查看群聊详细法律规定</a>
         </div>
     </div>
+<script>
+    // 页面加载完成后初始化图表
+    window.onload = function () {
+        const ctx = document.getElementById('violationChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['不文明用语', '恶意刷屏', '传播不良信息'],
+                datasets: [{
+                    label: '违规类型分布',
+                    data: [3, 2, 0], // 示例数据，可根据实际情况调整
+                    backgroundColor: ['#ff6b6b', '#007BFF', '#2ecc71'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            fontColor: '#333',
+                            fontSize: 14
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: '群聊违规类型占比',
+                        font: {
+                            size: 18
+                        }
+                    }
+                }
+            }
+        });
+    };
+</script>
     <script>
         function searchTimeline() {
             const searchText = document.getElementById('timelineSearchInput').value.toLowerCase();
