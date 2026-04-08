@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy Clinic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fef6f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .nav-container {
+            background-color: #feecd8;
+            padding: 25px 0 10px;
+            position: relative;
+        }
+
+        /* ======================================
+           终极贴顶！绝对顶到浏览器最顶端！
+        ======================================= */
+        .logo-tab {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: -385px;
+            background-color: #ff9551;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 14px 22px;
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 101;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            text-align: center;
+        }
+
+        .nav-menu a {
+            color: #ff6b35;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 16px;
+        }
+
+        .nav-menu a:hover {
+            color: #e05a20;
+        }
+
+        .article-section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #ffb080;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .article-box {
+            background: white;
+            padding: 40px;
+            border-radius: 6px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .article-box h2 {
+            color: #ff6b35;
+            margin-bottom: 20px;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .article-box p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .food-img {
+            width: 220px;
+            height: auto;
+            border-radius: 6px;
+            float: right;
+            margin: 15px 0 10px 18px;
+        }
+
+        .page-section {
+            padding: 40px 0;
+            display: none;
+        }
+
+        .page-title {
+            font-size: 26px;
+            color: #ff6b35;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .content-box {
+            background: white;
+            padding: 40px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .content-box p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .page-img {
+            width: 200px;
+            height: auto;
+            border-radius: 6px;
+            float: right;
+            margin: 10px 0 12px 18px;
+        }
+
+        .powered-text {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .people-card {
+            background: #fff5ee;
+            padding: 20px 25px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .people-card h3 {
+            color: #ff6b35;
+            font-size: 17px;
+            margin-bottom: 4px;
+        }
+
+        .people-card p {
+            font-size: 15px;
+            color: #666;
+            margin: 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            color: #ff6b35;
+            font-size: 15px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #feecd8;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="nav-container">
+    <div class="container">
+        <div class="logo-tab" onclick="showArticle()">Joy Clinic</div>
+        <div class="nav-menu">
+            <a onclick="showAbout()">ABOUT US</a>
+            <a onclick="showPeople()">PEOPLE</a>
+            <a onclick="showNew()">WHAT'S NEW</a>
+        </div>
+    </div>
+</div>
+
+<section id="article" class="article-section">
+    <div class="container">
+        <h1 class="section-title">NEWSLETTER</h1>
+        <div class="article-box">
+            <h2>Improve Your Eating Habits</h2>
+            <p>Healthy eating is important for a healthy body and mind. Both what we eat and how we eat are important!</p>
+            <p>For example, some people have fast food every week. It is easy and delicious! But it often has lots of salt, fat, and sugar. That makes us put on weight. Eating fast food like pizza and hamburgers too often may cause heart problems later. If you cook your own meals instead, you can make healthy balanced meals.</p>
+            <p>Eating three meals a day is important. But some people don't have breakfast. Maybe they don't feel hungry in the morning, or they are busy. Food gives us energy. Without breakfast, we easily feel sleepy and cannot focus.</p>
+            <p>Some people eat too many sweet foods like ice cream and chocolate. They taste good but have much sugar and cause tooth problems. Choose fruit as a healthy snack.</p>
+            <img src="https://picsum.photos/id/292/400/300" alt="Healthy Food" class="food-img">
+            <p>Remember: You are what you eat. Healthy eating means healthy food and good habits.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="page-section">
+    <div class="container">
+        <h2 class="page-title">ABOUT US</h2>
+        <div class="content-box">
+            <img src="https://picsum.photos/id/1076/400/300" alt="Clinic" class="page-img">
+            <p>Joy Clinic is a warm and professional community health center that has been serving local families for many years. We focus on health education, disease prevention, and daily wellness guidance for people of all ages.</p>
+            <p>We believe that good health starts with healthy habits. Our team provides clear, practical, and easy-to-follow advice on nutrition, daily routines, mental health, and physical wellness.</p>
+            <p>Our goal is to make health knowledge simple and accessible. We regularly publish newsletters, health tips, and lifestyle guides to help people build long-term healthy habits and enjoy a better quality of life.</p>
+            <p>At Joy Clinic, we care about your physical and mental well-being. We listen to your needs and provide reliable health support you can trust. Your health and happiness are always our top priority.</p>
+            <div class="powered-text">Powered by Github 人民教育出版社</div>
+        </div>
+    </div>
+</section>
+
+<section id="people" class="page-section">
+    <div class="container">
+        <h2 class="page-title">PEOPLE</h2>
+        <div class="content-box">
+            <div class="people-card">
+                <h3>Dr. Emily Smith</h3>
+                <p>Chief Medical Officer</p>
+                <p>With over 15 years of clinical experience, Dr. Smith specializes in family health and preventive care. She is dedicated to helping patients of all ages stay healthy with professional advice and gentle care.</p>
+            </div>
+            <div class="people-card">
+                <h3>Dr. Michael Lee</h3>
+                <p>Nutrition Specialist</p>
+                <p>Dr. Lee is an expert in healthy eating and balanced diets. He creates personalized nutrition plans, teaches healthy cooking tips, and helps people improve their eating habits in simple and enjoyable ways.</p>
+            </div>
+            <div class="people-card">
+                <h3>Sarah Johnson</h3>
+                <p>Mental Health Counselor</p>
+                <p>Sarah focuses on stress management, emotional wellness, and mental health support. She helps people relax, stay positive, and keep a healthy mind in busy daily life.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="new" class="page-section">
+    <div class="container">
+        <h2 class="page-title">WHAT'S NEW</h2>
+        <div class="content-box">
+            <img src="https://picsum.photos/id/996/400/300" alt="News" class="page-img">
+            <h3 style="color:#ff6b35; margin-bottom:12px;">New Health Eating Advice Published</h3>
+            <p>Our latest health newsletter has been officially released, bringing you simple and useful tips to improve your daily eating habits and build a healthier lifestyle.</p>
+            <p>This issue includes helpful advice on choosing healthy food, avoiding too much sugar and fast food, eating regular meals, and using fruit as smart snacks. All tips are easy to use in real life.</p>
+            <p>We hope this newsletter can help you make small but meaningful changes to stay healthier and feel better every day.</p>
+            <span class="back-btn" onclick="showArticle()">← Back to Article</span>
+        </div>
+    </div>
+</section>
+
+<footer id="footer">
+    <div class="container">
+        <p>Powered by Github 人民教育出版社</p>
+    </div>
+</footer>
+
+<script>
+    const article = document.getElementById('article');
+    const about = document.getElementById('about');
+    const people = document.getElementById('people');
+    const newPage = document.getElementById('new');
+    const footer = document.getElementById('footer');
+
+    function showArticle() {
+        article.style.display = 'block';
+        about.style.display = 'none';
+        people.style.display = 'none';
+        newPage.style.display = 'none';
+        footer.style.display = 'none';
+    }
+
+    function showAbout() {
+        article.style.display = 'none';
+        about.style.display = 'block';
+        people.style.display = 'none';
+        newPage.style.display = 'none';
+        footer.style.display = 'block';
+    }
+
+    function showPeople() {
+        article.style.display = 'none';
+        about.style.display = 'none';
+        people.style.display = 'block';
+        newPage.style.display = 'none';
+        footer.style.display = 'block';
+    }
+
+    function showNew() {
+        article.style.display = 'none';
+        about.style.display = 'none';
+        people.style.display = 'none';
+        newPage.style.display = 'block';
+        footer.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
