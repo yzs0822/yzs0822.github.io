@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Trip Diary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: #fff;
+            font-family: "Times New Roman", serif;
+        }
+        /* 核心日记卡片：严格匹配色值+立体侧边 */
+        .diary-card {
+            width: 1042px;
+            height: 960px;
+            background-color: #F1FAF9; /* 整体背景 */
+            /* 左侧双竖线立体效果：浅#B9E2E6 + 深#81AAD8 */
+            border-left: 14px solid #B9E2E6;
+            box-shadow: inset 8px 0 0 #81AAD8, 2px 2px 10px rgba(0,0,0,0.08);
+            border-right: 2px solid #B9E2E6;
+            border-top: 2px solid #B9E2E6;
+            border-bottom: 2px solid #B9E2E6;
+            padding: 62px 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* 日期样式 */
+        .diary-date {
+            font-size: 24px;
+            color: #3A4454;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+        /* 正文排版 1:1匹配原图行间距/段落 */
+        .diary-content {
+            font-size: 22px;
+            line-height: 1.72;
+            color: #3A4454;
+            text-align: left;
+        }
+        .diary-content p {
+            margin-bottom: 30px;
+        }
+        /* 右下角手绘插图：1:1复刻原图线条 */
+        .diary-illustration {
+            position: absolute;
+            bottom: 42px;
+            right: 48px;
+            width: 330px;
+            height: 345px;
+        }
+    </style>
+</head>
+<body>
+    <div class="diary-card">
+        <div class="diary-date">Friday, 30 May</div>
+        <div class="diary-content">
+            <p>Today we went on a school trip to a farm! It was tiring but great fun! In the morning, we explored the farm. There were large tents with tomatoes, cucumbers, and many other fruits and vegetables. The farmer told us about how these fruits and vegetables go from the fields to our tables. I was very interested because I usually only see them in the supermarket.</p>
+
+            <p>Then we got straight to work! First, we picked some strawberries. The work seemed easy, but it took time to get it right. Slowly, we filled many baskets. In the afternoon, the farmer taught us how to cut branches and leaves from tomato plants. This helps them to grow more fruit. Finally, we watered the plants. Plants need so much work! It was tiring, but I enjoyed working with my hands.</p>
+
+            <p>One thing I learnt today: Farming isn’t easy!<br>
+            It made me think of the saying, “Every grain comes from hard work.” The farmer let us take some vegetables home. My mum cooked some for dinner, and they were fresh and delicious! They certainly taste better when you work for them! Today was really a day to remember.</p>
+        </div>
+        <!-- 完全复刻原图的矢量手绘插图 -->
+        <img src="pic.png">
+    </div>
+</body>
+</html>
