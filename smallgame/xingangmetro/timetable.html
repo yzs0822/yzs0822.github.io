@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>时刻表 - 新港市轨道交通集团</title>
+<meta name="description" content="新港市轨道交通各线路首末班车时刻表。">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  main{padding:26px 0 40px}
+  h1{font-size:23px;margin-bottom:6px}
+  .lede{color:#667;font-size:14px;margin-bottom:20px}
+  .hint{color:#fff;user-select:text;font-size:12px}
+  .debug-row{background:#1f2328!important;color:#ffb100}
+  .debug-row td{border-bottom:0}
+  .debug-row .mono{font-family:ui-monospace,Consolas,monospace}
+  .footnote{font-size:12px;color:#aab;margin-top:14px;text-align:right}
+  .footnote a{color:#aab}
+  body.hc .hint{color:#111}
+  body.hc .debug-row{background:#000!important}
+</style>
+<script>
+  window.PAGE_TITLE_EN = "Timetable - Xingang Metro Group";
+  window.PAGE_I18N = {
+    "top.left": "Xingang Metro Group · Official Website",
+    "notice.tag": "Service Notice",
+    "notice.text": "Timetable data updated to v13.13.14.",
+    "crumb.time": "Timetable",
+    "page.title": "Timetable",
+    "page.lede": "First and last train times for all lines in operation.",
+    "sec.main": "Operating Hours",
+    "th.line": "Line",
+    "th.range": "Terminals",
+    "th.first": "First train",
+    "th.last": "Last train",
+    "th.note": "Note",
+    "r1": "Xingang North — Bay Park",
+    "r2": "Beiyuan — South Station",
+    "r4": "Songlin Road — Lingang New Area",
+    "r7": "University Town — Phoenix Hill",
+    "r10": "West Wharf — Civic Center",
+    "ok": "In service",
+    "note1": "Weekend extended by 30 min",
+    "note2": "Peak hours 07:00–09:00",
+    "note3": "Follows holiday schedule",
+    "sec.debug": "Debug",
+    "d.line": "Line 13",
+    "d.range": "Xingang North — Guixu",
+    "d.first": "—",
+    "d.last": "00:13",
+    "d.note": "Platform 13 · Dispatcher Zhou Mo / Ext. 13",
+    "footnote": "Timetable v13.13.14"
+  };
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link" data-i18n="a11y.skip">跳到主要内容</a>
+
+<!-- 夜间时刻表由调度系统单独下发，入口：/staff/login.html -->
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="left" data-i18n="top.left">新港市轨道交通集团 · 官方网站</span>
+    <div class="tools">
+      <button type="button" id="btnA11y" data-i18n="top.a11y">无障碍浏览</button>
+      <span class="sep">｜</span>
+      <button type="button" id="btnLang">繁體</button>
+      <span class="sep">｜</span>
+      <button type="button" id="btnEn">EN</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <div class="mark">港</div>
+      <div>
+        <span data-i18n="logo.name">新港市轨道交通集团</span>
+        <small data-i18n="logo.sub">XINGANG METRO</small>
+      </div>
+    </div>
+    <div class="hotline">
+      <span data-i18n="head.hotline">服务热线</span>
+      <strong>400-013-1314</strong>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="主导航">
+  <div class="wrap">
+    <a href="index.html" data-i18n="nav.home">首页</a>
+    <a href="lines/index.html" data-i18n="nav.lines">线路查询</a>
+    <a href="timetable.html" class="active" data-i18n="nav.time">时刻表</a>
+    <a href="news/index.html" data-i18n="nav.news">新闻公告</a>
+    <a href="lostfound.html" data-i18n="nav.lost">失物招领</a>
+    <a href="staff/login.html" data-i18n="nav.staff">员工登录</a>
+  </div>
+</nav>
+
+<div class="notice" role="status">
+  <div class="wrap">
+    <span class="tag" data-i18n="notice.tag">运营公告</span>
+    <span data-i18n="notice.text">时刻表数据已更新至 v13.13.14。</span>
+  </div>
+</div>
+
+<div class="crumb">
+  <div class="wrap">
+    <a href="index.html" data-i18n="nav.home">首页</a><span>/</span><span data-i18n="crumb.time">时刻表</span>
+  </div>
+</div>
+
+<main id="main">
+  <div class="wrap">
+    <h1 data-i18n="page.title">时刻表</h1>
+    <p class="lede" data-i18n="page.lede">各线路首末班车发车时间。时刻表以车站当日公告为准。</p>
+
+    <div class="card">
+      <h2 data-i18n="sec.main">运营时间</h2>
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="th.line">线路</th>
+            <th data-i18n="th.range">起讫站</th>
+            <th data-i18n="th.first">首班车</th>
+            <th data-i18n="th.last">末班车</th>
+            <th data-i18n="th.note">备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1号线</td><td data-i18n="r1">新港北站 — 海湾公园</td><td>05:30</td><td>23:30</td><td data-i18n="note1">周末延长 30 分钟</td></tr>
+          <tr><td>2号线</td><td data-i18n="r2">北苑 — 南站</td><td>05:45</td><td>23:15</td><td data-i18n="note2">高峰时段 07:00–09:00</td></tr>
+          <tr><td>4号线</td><td data-i18n="r4">松林路 — 临港新区</td><td>06:00</td><td>23:00</td><td>—</td></tr>
+          <tr><td>7号线</td><td data-i18n="r7">大学城 — 凤凰山</td><td>05:50</td><td>23:20</td><td>—</td></tr>
+          <tr><td>10号线</td><td data-i18n="r10">西码头 — 市民中心</td><td>06:10</td><td>22:50</td><td data-i18n="note3">节假日按专用时刻表</td></tr>
+
+          <tr id="debugRow" class="debug-row" hidden>
+            <td data-i18n="d.line">13号线</td>
+            <td data-i18n="d.range">新港北站 — 归墟</td>
+            <td data-i18n="d.first">—</td>
+            <td class="mono">00:13</td>
+            <td data-i18n="d.note">13号站台 · 调度员 周默 / 分机 13</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="footnote">
+        <span data-i18n="footnote">时刻表版本</span> v13.13.14 ·
+        <a href="staff/login.html">内部数据</a>
+      </div>
+    </div>
+
+    <p class="hint">夜间数据需调试权限：?debug=1</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div data-i18n="foot.org">新港市轨道交通集团有限公司</div>
+      <div data-i18n="foot.addr">地址：新港市滨海区轨道大道 1 号</div>
+      <div><span data-i18n="head.hotline">服务热线</span>：400-013-1314</div>
+    </div>
+    <div>
+      <a href="index.html" data-i18n="nav.home">首页</a> ·
+      <a href="lines/index.html" data-i18n="nav.lines">线路查询</a> ·
+      <a href="news/index.html" data-i18n="nav.news">新闻公告</a> ·
+      <a href="lostfound.html" data-i18n="nav.lost">失物招领</a> ·
+      <a href="staff/login.html" data-i18n="nav.staff">员工登录</a>
+    </div>
+  </div>
+  <div class="wrap fine" data-i18n="foot.fine">
+    © 2024 新港市轨道交通集团有限公司 ｜ 本网站为虚构解谜作品，与任何真实机构、线路、事件无关。
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/cn2t.js" defer></script>
+<script src="assets/site.js" defer></script>
+<script>
+  // 调试模式：?debug=1 显示夜间时刻表
+  (function () {
+    var p = new URLSearchParams(location.search);
+    if (p.get("debug") === "1") {
+      var row = document.getElementById("debugRow");
+      if (row) row.hidden = false;
+    }
+  })();
+</script>
+<script>
+  console.log("%c新港地铁 · 时刻表", "font-size:15px;color:#0057b8;font-weight:bold");
+  console.log("白班数据已同步。");
+  console.log("夜班数据未同步。");
+  console.log("调度员：周默 / 分机 13");
+</script>
+
+</body>
+</html>

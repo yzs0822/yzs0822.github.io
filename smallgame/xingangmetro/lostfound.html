@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>失物招领 - 新港市轨道交通集团</title>
+<meta name="description" content="新港市轨道交通失物招领查询。">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  main{padding:26px 0 40px}
+  h1{font-size:23px;margin-bottom:6px}
+  .lede{color:#667;font-size:14px;margin-bottom:20px}
+  .item{border-bottom:1px solid #eef1f5;padding:14px 0}
+  .item:last-child{border-bottom:0}
+  .item-top{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .item-no{font-family:ui-monospace,Consolas,monospace;font-size:13px;color:#556;background:#f0f2f5;padding:2px 8px;border-radius:3px}
+  .item-name{font-weight:600}
+  .item-date{color:#aab;font-size:13px;margin-left:auto}
+  .item-desc{color:#556;font-size:14px;margin-top:8px;line-height:1.8}
+  .audio-box{margin-top:12px;background:#f7f9fc;border:1px solid #e6eaf0;border-radius:6px;padding:14px}
+  .audio-box .label{font-size:13px;color:#556;margin-bottom:8px}
+  audio{width:100%;max-width:420px;display:block}
+  .audio-meta{font-size:12px;color:#aab;margin-top:8px;font-family:ui-monospace,Consolas,monospace}
+  .hint{color:#fff;user-select:text;font-size:12px;margin-top:14px}
+  .ghost-link{color:inherit;cursor:text}
+  .ghost-link:hover{color:#0057b8}
+  body.hc .item-no{background:#333;color:#fff}
+  body.hc .audio-box{background:#111;border-color:#444}
+</style>
+<script>
+  window.PAGE_TITLE_EN = "Lost & Found - Xingang Metro Group";
+  window.PAGE_I18N = {
+    "top.left": "Xingang Metro Group · Official Website",
+    "notice.tag": "Lost & Found",
+    "notice.text": "Items unclaimed after 90 days will be transferred to the archive.",
+    "crumb.lost": "Lost & Found",
+    "page.title": "Lost & Found",
+    "page.lede": "Items recovered on the network. Please bring ID when claiming.",
+    "item1.no": "Item No. 312",
+    "item1.name": "Black umbrella",
+    "item1.date": "2024-03-11",
+    "item1.desc": "Found on Line 1, Xingang North Station, Platform 1.",
+    "item2.no": "Item No. 313",
+    "item2.name": "Student ID card",
+    "item2.date": "2024-03-12",
+    "item2.desc": "Found on Line 4, Songlin Road Station. Name partially illegible.",
+    "item3.no": "Item No. 314",
+    "item3.name": "Black voice recorder",
+    "item3.date": "2019-03-14 00:13",
+    "item3.desc": "Found at Guixu Station. No claimant has come forward. Recording attached; contents unverified.",
+    "audio.label": "Attachment: recording_0314.mp3",
+    "audio.meta": "Duration 00:13 · Sample rate 1314 Hz · Recorded 2019-03-14 00:13",
+    "item4.no": "Item No. 315",
+    "item4.name": "Child's shoe (single)",
+    "item4.date": "2024-03-13",
+    "item4.desc": "Found on Line 7, University Town Station.",
+    "item5.no": "Item No. 316",
+    "item5.name": "Unclaimed letter",
+    "item5.date": "2024-03-14",
+    "item5.desc": "Addressee unknown. Postmark: Xingang, 2019-03-14.",
+    "footnote": "Items are kept for 90 days."
+  };
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link" data-i18n="a11y.skip">跳到主要内容</a>
+
+<!-- 314 号物品按调度指令保留，勿按 90 天规则清理 -->
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="left" data-i18n="top.left">新港市轨道交通集团 · 官方网站</span>
+    <div class="tools">
+      <button type="button" id="btnA11y" data-i18n="top.a11y">无障碍浏览</button>
+      <span class="sep">｜</span>
+      <button type="button" id="btnLang">繁體</button>
+      <span class="sep">｜</span>
+      <button type="button" id="btnEn">EN</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <div class="mark">港</div>
+      <div>
+        <span data-i18n="logo.name">新港市轨道交通集团</span>
+        <small data-i18n="logo.sub">XINGANG METRO</small>
+      </div>
+    </div>
+    <div class="hotline">
+      <span data-i18n="head.hotline">服务热线</span>
+      <strong>400-013-1314</strong>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="主导航">
+  <div class="wrap">
+    <a href="index.html" data-i18n="nav.home">首页</a>
+    <a href="lines/index.html" data-i18n="nav.lines">线路查询</a>
+    <a href="timetable.html" data-i18n="nav.time">时刻表</a>
+    <a href="news/index.html" data-i18n="nav.news">新闻公告</a>
+    <a href="lostfound.html" class="active" data-i18n="nav.lost">失物招领</a>
+    <a href="staff/login.html" data-i18n="nav.staff">员工登录</a>
+  </div>
+</nav>
+
+<div class="notice" role="status">
+  <div class="wrap">
+    <span class="tag" data-i18n="notice.tag">失物招领</span>
+    <span data-i18n="notice.text">超过 90 天无人认领的物品将移交档案室。</span>
+  </div>
+</div>
+
+<div class="crumb">
+  <div class="wrap">
+    <a href="index.html" data-i18n="nav.home">首页</a><span>/</span><span data-i18n="crumb.lost">失物招领</span>
+  </div>
+</div>
+
+<main id="main">
+  <div class="wrap">
+    <h1 data-i18n="page.title">失物招领</h1>
+    <p class="lede" data-i18n="page.lede">线网内拾获物品公示。认领请携带有效证件。</p>
+
+    <div class="card">
+      <div class="item">
+        <div class="item-top">
+          <span class="item-no" data-i18n="item1.no">物品编号 312</span>
+          <span class="item-name" data-i18n="item1.name">黑色雨伞</span>
+          <span class="item-date">2024-03-11</span>
+        </div>
+        <div class="item-desc" data-i18n="item1.desc">拾获于 1号线 新港北站 1号站台。</div>
+      </div>
+
+      <div class="item">
+        <div class="item-top">
+          <span class="item-no" data-i18n="item2.no">物品编号 313</span>
+          <span class="item-name" data-i18n="item2.name">学生证</span>
+          <span class="item-date">2024-03-12</span>
+        </div>
+        <div class="item-desc" data-i18n="item2.desc">拾获于 4号线 松林路站，姓名部分模糊。</div>
+      </div>
+
+      <div class="item">
+        <div class="item-top">
+          <span class="item-no" data-i18n="item3.no">物品编号 314</span>
+          <span class="item-name" data-i18n="item3.name">黑色录音笔</span>
+          <span class="item-date">2019-03-14 00:13</span>
+        </div>
+        <div class="item-desc" data-i18n="item3.desc">拾获于 归墟站。至今无人认领。附录音文件，内容未核实。</div>
+        <div class="audio-box">
+          <div class="label" data-i18n="audio.label">附件：recording_0314.mp3</div>
+          <audio controls preload="none" src="assets/audio/recording_0314.mp3"></audio>
+          <div class="audio-meta" data-i18n="audio.meta">时长 00:13 · 采样率 1314 Hz · 录制时间 2019-03-14 00:13</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-top">
+          <span class="item-no" data-i18n="item4.no">物品编号 315</span>
+          <span class="item-name" data-i18n="item4.name">儿童鞋（单只）</span>
+          <span class="item-date">2024-03-13</span>
+        </div>
+        <div class="item-desc" data-i18n="item4.desc">拾获于 7号线 大学城站。</div>
+      </div>
+
+      <div class="item">
+        <div class="item-top">
+          <span class="item-no" data-i18n="item5.no">物品编号 316</span>
+          <span class="item-name" data-i18n="item5.name">未领取信件</span>
+          <span class="item-date">2024-03-14</span>
+        </div>
+        <div class="item-desc" data-i18n="item5.desc">收件人不明。邮戳：新港，2019-03-14。</div>
+      </div>
+    </div>
+
+    <p class="hint" id="hint"></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div data-i18n="foot.org">新港市轨道交通集团有限公司</div>
+      <div><span data-i18n="head.hotline">服务热线</span>：400-013-1314</div>
+    </div>
+    <div>
+      <a href="index.html" data-i18n="nav.home">首页</a> ·
+      <a href="news/index.html" data-i18n="nav.news">新闻公告</a> ·
+      <a href="staff/login.html" data-i18n="nav.staff">员工登录</a>
+    </div>
+  </div>
+  <div class="wrap fine" data-i18n="foot.fine">
+    © 2024 新港市轨道交通集团有限公司 ｜ 本网站为虚构解谜作品，与任何真实机构、线路、事件无关。
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/cn2t.js" defer></script>
+<script src="assets/site.js" defer></script>
+<script>
+(function () {
+  var hint = document.getElementById("hint");
+  var clicks = 0;
+  document.querySelectorAll(".item-no").forEach(function (el) {
+    el.style.cursor = "pointer";
+    el.addEventListener("click", function () {
+      if (el.textContent.indexOf("314") < 0) return;
+      clicks++;
+      var msg = {
+        "zh-CN": ["音频文件缺少频谱数据。", "建议在其它工具中查看频谱。", "关键词：GUIXU"],
+        "zh-TW": ["音訊檔案缺少頻譜資料。", "建議在其它工具中查看頻譜。", "關鍵詞：GUIXU"],
+        "en": ["Audio file has no spectrum data.", "Try viewing the spectrum in another tool.", "Keyword: GUIXU"]
+      };
+      var lang = localStorage.getItem("metro.lang") || "zh-CN";
+      var arr = msg[lang] || msg["zh-CN"];
+      hint.textContent = arr[Math.min(clicks - 1, arr.length - 1)];
+    });
+  });
+
+  console.log("%c失物招领 · 内部备注", "font-size:15px;color:#0057b8;font-weight:bold");
+  console.log("编号 314 已超期保留 1825 天。");
+  console.log("保留原因：调度指令 XG-2019-0314。");
+})();
+</script>
+
+</body>
+</html>

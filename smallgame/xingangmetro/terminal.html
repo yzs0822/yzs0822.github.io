@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>夜间调度终端 - 新港市轨道交通集团</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  html,body{height:100%}
+  body{background:#0b0f14;color:#9fb3c8;font-family:ui-monospace,Consolas,"Courier New",monospace;line-height:1.8}
+  a{color:#6ea8fe}
+  a:hover{color:#a8c7ff}
+  .wrap{max-width:900px;margin:0 auto;padding:0 16px}
+  .bar{background:#05080b;border-bottom:1px solid #1c2633;color:#5d7899;font-size:12px}
+  .bar .wrap{display:flex;justify-content:space-between;align-items:center;height:30px;gap:12px}
+  .bar .tools button{background:none;border:0;color:#5d7899;font:inherit;font-size:12px;cursor:pointer;padding:0 4px}
+  .bar .tools button:hover{color:#9fb3c8;text-decoration:underline}
+  .bar .sep{color:#1c2633}
+
+  .term{padding:26px 0 60px;min-height:calc(100% - 30px)}
+  .status{font-size:12px;color:#5d7899;margin-bottom:18px;letter-spacing:1px}
+  .status .dot{color:#39d353}
+  .status .warn{color:#ffb100}
+
+  .term-window{background:#0f141a;border:1px solid #1c2633;border-radius:8px;padding:22px;box-shadow:0 0 0 1px rgba(110,168,254,.05)}
+  pre{margin:0;white-space:pre-wrap;font:inherit;font-size:13.5px;color:#9fb3c8}
+  .lbl{color:#5d7899}
+  .ok{color:#39d353}
+  .warn{color:#ffb100}
+  .err{color:#ff6b6b}
+  .hot{color:#fff;font-weight:700}
+
+  .console-input{display:flex;gap:8px;margin-top:20px;align-items:center;flex-wrap:wrap}
+  .console-input span{color:#39d353}
+  .console-input input{flex:1;min-width:180px;background:transparent;border:0;border-bottom:1px dashed #2c3a4b;color:#fff;font:inherit;font-size:14px;padding:6px 2px;outline:0}
+  .console-input input:focus{border-bottom-color:#6ea8fe}
+  .console-input button{background:#1c2633;color:#9fb3c8;border:1px solid #2c3a4b;border-radius:4px;padding:7px 14px;font:inherit;font-size:13px;cursor:pointer}
+  .console-input button:hover{background:#243040;color:#fff}
+
+  .menu{margin-top:22px;display:grid;gap:8px}
+  .menu button{text-align:left;background:#0f141a;border:1px solid #1c2633;color:#9fb3c8;font:inherit;font-size:14px;padding:12px 16px;border-radius:6px;cursor:pointer;transition:border-color .15s,color .15s}
+  .menu button:hover{border-color:#6ea8fe;color:#fff}
+  .menu button[disabled]{opacity:.35;cursor:not-allowed;border-color:#1c2633;color:#5d7899}
+
+  .ending{margin-top:22px;border-left:3px solid #6ea8fe;padding:14px 18px;background:#0f141a;border-radius:0 6px 6px 0;display:none}
+  .ending.show{display:block}
+  .ending h3{margin:0 0 8px;font-size:15px;color:#fff;letter-spacing:1px}
+  .ending p{margin:0 0 8px;font-size:14px}
+  .ending .final{color:#39d353;font-weight:700}
+
+  .back{display:inline-block;margin-top:28px;font-size:13px;color:#5d7899}
+  .back:hover{color:#9fb3c8}
+
+  .hint{color:#0b0f14;user-select:text;font-size:11px;margin-top:24px}
+  .hint::selection{background:#ffb100;color:#000}
+
+  .a11y-panel{background:#0f141a;color:#9fb3c8;border-color:#1c2633}
+  .a11y-head{background:#05080b}
+  .a11y-body legend{color:#ffb100}
+  .a11y-body .row button{background:#151c26;color:#9fb3c8;border-color:#2c3a4b}
+  .a11y-body .row button[aria-pressed="true"]{background:#6ea8fe;color:#000;border-color:#6ea8fe}
+  .a11y-body .reset{background:#151c26;color:#9fb3c8;border-color:#2c3a4b}
+</style>
+<script>
+  window.PAGE_TITLE_EN = "Night Dispatch Terminal - Xingang Metro Group";
+  window.PAGE_I18N = {
+    "top.left": "Night Dispatch Terminal · Xingang Metro Group"
+  };
+</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link" data-i18n="a11y.skip">跳到主要内容</a>
+
+<!-- 夜间调度终端 v13.13.14 · 工单 XG-2019-0314 · 请勿断电 -->
+
+<div class="bar">
+  <div class="wrap">
+    <span data-i18n="top.left">夜间调度终端 · 新港市轨道交通集团</span>
+    <div class="tools">
+      <button type="button" id="btnA11y" data-i18n="top.a11y">无障碍浏览</button>
+      <span class="sep">｜</span>
+      <button type="button" id="btnLang">繁體</button>
+      <span class="sep">｜</span>
+      <button type="button" id="btnEn">EN</button>
+    </div>
+  </div>
+</div>
+
+<main id="main" class="term">
+  <div class="wrap">
+    <div class="status">
+      <span class="dot">●</span> NIGHT-DISPATCH-13 ONLINE
+      <span class="sep">·</span> 当前时间 <span id="clock">00:13:00</span>
+      <span class="sep">·</span> <span class="warn">末班车运行中</span>
+    </div>
+
+    <div class="term-window">
+      <pre id="log">新港市轨道交通集团
+夜间调度系统 v13.13.14
+------------------------------------
+调度员：周默 / 分机 13
+连接状态：<span class="ok">已连接</span>
+系统时间：<span class="warn">2019-03-14 00:13</span>
+
+检测到 1 个未处理事件：
+  事件编号  XG-2019-0314
+  类型      乘客档案异常
+  描述      47 人上车，46 人下车
+  缺失      林晚
+  状态      <span class="err">未处理</span>
+
+正在等待操作员指令...
+</pre>
+
+      <div class="console-input">
+        <span>$</span>
+        <input id="cmd" type="text" placeholder="输入指令（试试 help）" autocomplete="off" spellcheck="false">
+        <button id="run">执行</button>
+      </div>
+    </div>
+
+    <div class="menu" id="menu">
+      <button data-act="view" data-i18n="menu.view">查看乘客档案：林晚</button>
+      <button data-act="mark" data-i18n="menu.mark">将林晚标记为“已到达”</button>
+      <button data-act="stop" data-i18n="menu.stop">关闭 13 号线调度系统</button>
+      <button data-act="reset" data-i18n="menu.reset">恢复默认记录（删除异常）</button>
+    </div>
+
+    <div class="ending" id="ending">
+      <h3 id="endTitle"></h3>
+      <div id="endText"></div>
+      <a class="back" href="index.html">← 返回官网首页</a>
+    </div>
+
+    <a class="back" href="archive/2019.html">← 返回 2019 档案</a>
+
+    <p class="hint" id="hint"></p>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/cn2t.js" defer></script>
+<script src="assets/site.js" defer></script>
+<script>
+(function () {
+  "use strict";
+
+  var log = document.getElementById("log");
+  var cmd = document.getElementById("cmd");
+  var run = document.getElementById("run");
+  var menu = document.getElementById("menu");
+  var ending = document.getElementById("ending");
+  var endTitle = document.getElementById("endTitle");
+  var endText = document.getElementById("endText");
+  var hint = document.getElementById("hint");
+  var clock = document.getElementById("clock");
+
+  // 系统时间从 00:13:00 开始缓慢走动
+  var t = 13 * 60; // 00:13:00
+  setInterval(function () {
+    t++;
+    var m = Math.floor(t / 60) % 60, s = t % 60;
+    var hh = String(Math.floor(t / 3600) % 24).padStart(2, "0");
+    clock.textContent = hh + ":" + String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+  }, 1000);
+
+  function writeln(line) {
+    log.innerHTML += "\n" + line;
+    log.scrollTop = log.scrollHeight;
+  }
+
+  var L = {
+    "zh-CN": {
+      help: [
+        "可用指令：",
+        "  help        显示本帮助",
+        "  whoami      当前操作员",
+        "  status      系统状态",
+        "  list        列出未处理事件",
+        "  archive     打开 2019 档案入口",
+        "  guixu       查询终点站信息",
+        "  clear       清屏"
+      ],
+      whoami: "当前操作员：guest（临时权限）\n授权来源：guest/guest 登录（工单 XG-2019-0314）",
+      status: "系统状态：<span class='warn'>末班车运行中</span>\n乘客：47 上车 / 46 下车\n缺失：1",
+      list: "未处理事件：\n  XG-2019-0314  乘客档案异常  缺失：林晚",
+      archive: "档案入口：<a href='archive/2019.html'>/archive/2019.html</a>\n口令：GUIXU314（已在公告中泄露）",
+      guixu: "终点站：归墟\n站台：13\n首班：无\n末班：00:13\n备注：永久停靠",
+      clear: ""
+    },
+    "zh-TW": {
+      help: [
+        "可用指令：",
+        "  help        顯示本說明",
+        "  whoami      目前操作員",
+        "  status      系統狀態",
+        "  list        列出未處理事件",
+        "  archive     開啟 2019 檔案入口",
+        "  guixu       查詢終點站資訊",
+        "  clear       清屏"
+      ],
+      whoami: "目前操作員：guest（臨時權限）\n授權來源：guest/guest 登入（工單 XG-2019-0314）",
+      status: "系統狀態：<span class='warn'>末班車運行中</span>\n乘客：47 上車 / 46 下車\n缺失：1",
+      list: "未處理事件：\n  XG-2019-0314  乘客檔案異常  缺失：林晚",
+      archive: "檔案入口：<a href='archive/2019.html'>/archive/2019.html</a>\n口令：GUIXU314（已在公告中洩露）",
+      guixu: "終點站：歸墟\n月台：13\n首班：無\n末班：00:13\n備註：永久停靠",
+      clear: ""
+    },
+    "en": {
+      help: [
+        "Commands:",
+        "  help        show this help",
+        "  whoami      current operator",
+        "  status      system status",
+        "  list        list open incidents",
+        "  archive     open 2019 archive",
+        "  guixu       query terminal station",
+        "  clear       clear screen"
+      ],
+      whoami: "Operator: guest (temporary)\nSource: guest/guest login (ticket XG-2019-0314)",
+      status: "Status: <span class='warn'>last train running</span>\nPassengers: 47 boarded / 46 alighted\nMissing: 1",
+      list: "Open incidents:\n  XG-2019-0314  passenger record anomaly  missing: Lin Wan",
+      archive: "Archive: <a href='archive/2019.html'>/archive/2019.html</a>\nPassphrase: GUIXU314 (leaked in the notice)",
+      guixu: "Terminal: Guixu\nPlatform: 13\nFirst: none\nLast: 00:13\nNote: permanent stop",
+      clear: ""
+    }
+  };
+  function t() {
+    var l = localStorage.getItem("metro.lang") || "zh-CN";
+    return L[l] || L["zh-CN"];
+  }
+
+  function exec(raw) {
+    var c = raw.trim().toLowerCase();
+    if (!c) return;
+    writeln("<span class='lbl'>$ " + raw + "</span>");
+    var d = t();
+    switch (c) {
+      case "help": d.help.forEach(writeln); break;
+      case "whoami": writeln(d.whoami); break;
+      case "status": writeln(d.status); break;
+      case "list": writeln(d.list); break;
+      case "archive": writeln(d.archive); break;
+      case "guixu": writeln(d.guixu); break;
+      case "clear": log.innerHTML = ""; break;
+      default:
+        writeln("<span class='err'>未知指令：" + raw + "。试试 help</span>");
+    }
+  }
+
+  run.addEventListener("click", function () { exec(cmd.value); cmd.value = ""; });
+  cmd.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { exec(cmd.value); cmd.value = ""; }
+  });
+
+  var endings = {
+    "view": {
+      "zh-CN": { t: "乘客档案：林晚", b: "<p>姓名：林晚</p><p>状态：<span class='err'>封存中</span></p><p>当前位置：归墟站</p><p>备注：档案于 2019-03-14 00:13 被系统自动更正为“无此乘客”。</p>" },
+      "zh-TW": { t: "乘客檔案：林晚", b: "<p>姓名：林晚</p><p>狀態：<span class='err'>封存中</span></p><p>目前位置：歸墟站</p><p>備註：檔案於 2019-03-14 00:13 被系統自動更正為「無此乘客」。</p>" },
+      "en": { t: "Passenger: Lin Wan", b: "<p>Name: Lin Wan</p><p>Status: <span class='err'>sealed</span></p><p>Location: Guixu Station</p><p>Note: record auto-corrected to \"no such passenger\" at 2019-03-14 00:13.</p>" }
+    },
+    "mark": {
+      "zh-CN": { t: "已标记", b: "<p>已将 林晚 标记为 <span class='final'>已到达</span>。</p><p>下一班车正在进站。</p><p>首页将出现一条新公告。</p>" },
+      "zh-TW": { t: "已標記", b: "<p>已將 林晚 標記為 <span class='final'>已到達</span>。</p><p>下一班車正在進站。</p><p>首頁將出現一條新公告。</p>" },
+      "en": { t: "Marked", b: "<p>Lin Wan marked as <span class='final'>arrived</span>.</p><p>Next train is arriving.</p><p>A new notice will appear on the homepage.</p>" }
+    },
+    "stop": {
+      "zh-CN": { t: "调度系统已关闭", b: "<p>13 号线停止运行。</p><p>全城被封存的记忆开始回到人们脑中。</p><p>林晚回来了。她记得所有被遗忘的人。</p>" },
+      "zh-TW": { t: "調度系統已關閉", b: "<p>13 號線停止運行。</p><p>全城被封存的記憶開始回到人們腦中。</p><p>林晚回來了。她記得所有被遺忘的人。</p>" },
+      "en": { t: "Dispatch shut down", b: "<p>Line 13 has stopped.</p><p>Sealed memories across the city begin to return.</p><p>Lin Wan is back. She remembers everyone who was forgotten.</p>" }
+    },
+    "reset": {
+      "zh-CN": { t: "记录已恢复默认", b: "<p>缺失乘客已从名单中移除。</p><p>47 人上车，47 人下车。</p><p>一切恢复正常。</p><p>你不记得林晚。</p>" },
+      "zh-TW": { t: "記錄已恢復預設", b: "<p>缺失乘客已從名單中移除。</p><p>47 人上車，47 人下車。</p><p>一切恢復正常。</p><p>你不記得林晚。</p>" },
+      "en": { t: "Record reset", b: "<p>Missing passenger removed from list.</p><p>47 boarded, 47 alighted.</p><p>Everything is back to normal.</p><p>You do not remember Lin Wan.</p>" }
+    }
+  };
+
+  menu.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-act]");
+    if (!btn || btn.disabled) return;
+    var act = btn.dataset.act;
+    var l = localStorage.getItem("metro.lang") || "zh-CN";
+    var data = endings[act][l] || endings[act]["zh-CN"];
+    endTitle.textContent = data.t;
+    endText.innerHTML = data.b;
+    ending.classList.add("show");
+    ending.scrollIntoView({ behavior: "smooth" });
+
+    // 触发对应线索
+    if (act === "mark") {
+      try { localStorage.setItem("metro.ending", "arrived"); } catch (err) {}
+      writeln("<span class='ok'>林晚 已标记为到达。下一班车正在进站。</span>");
+      hint.textContent = "本地标记：metro.ending=arrived（首页会读这个标记）";
+    }
+    if (act === "stop") {
+      try { localStorage.setItem("metro.ending", "stopped"); } catch (err) {}
+      writeln("<span class='warn'>调度系统已关闭。</span>");
+    }
+    if (act === "reset") {
+      try { localStorage.setItem("metro.ending", "reset"); } catch (err) {}
+      writeln("<span class='lbl'>记录已恢复默认。</span>");
+    }
+  });
+
+  console.log("%c夜间调度终端 v13.13.14", "font-size:15px;color:#6ea8fe;font-weight:bold");
+  console.log("操作员：guest");
+  console.log("未处理事件：1");
+  console.log("提示：试试指令 guixu / archive / list。");
+})();
+</script>
+
+</body>
+</html>
