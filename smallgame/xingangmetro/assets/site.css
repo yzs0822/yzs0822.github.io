@@ -1,0 +1,105 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#f4f6f9;color:#1f2328;line-height:1.65}
+a{color:#0057b8;text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+:focus-visible{outline:3px solid #ffb100;outline-offset:2px;border-radius:2px}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:#ffb100;color:#000;padding:10px 16px;z-index:9999;font-weight:700}
+.skip-link:focus{left:8px;top:8px}
+
+/* 顶栏 */
+.topbar{background:#00315e;color:#b9cde6;font-size:13px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:32px;gap:12px}
+.topbar .left{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tools{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.tools button{background:none;border:0;color:#b9cde6;font:inherit;cursor:pointer;padding:2px 4px;border-radius:2px}
+.tools button:hover{color:#fff;text-decoration:underline}
+.tools .sep{color:#33557d}
+
+/* 头部 */
+header{background:#0057b8;color:#fff}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px;flex-wrap:wrap;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:700;letter-spacing:.5px}
+.logo .mark{width:36px;height:36px;border-radius:50%;background:#fff;color:#0057b8;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;flex:none}
+.logo small{display:block;font-size:11px;font-weight:400;color:#bcd5f2;letter-spacing:2px}
+.hotline{font-size:13px;color:#cfe0f5;text-align:right}
+.hotline strong{display:block;font-size:20px;color:#fff;letter-spacing:1px}
+
+/* 导航 */
+nav{background:#004a9e;border-top:1px solid rgba(255,255,255,.12)}
+nav .wrap{display:flex;flex-wrap:wrap}
+nav a{color:#dbe8f8;padding:13px 20px;font-size:15px;display:block}
+nav a:hover{background:#0057b8;color:#fff;text-decoration:none}
+nav a.active{background:#f4f6f9;color:#0057b8;font-weight:600}
+
+/* 公告 */
+.notice{background:#fff8e6;border-bottom:1px solid #f0e0b8}
+.notice .wrap{display:flex;gap:10px;padding:10px 16px;font-size:14px;align-items:center;flex-wrap:wrap}
+.notice .tag{background:#e8a300;color:#fff;font-size:12px;padding:2px 8px;border-radius:3px;white-space:nowrap}
+
+/* 面包屑 */
+.crumb{background:#fff;border-bottom:1px solid #e6eaf0;font-size:13px;color:#667}
+.crumb .wrap{padding:11px 16px}
+.crumb a{color:#667}
+.crumb span{margin:0 6px;color:#aab}
+
+/* 通用卡片 */
+.card{background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.07);padding:20px;margin-bottom:20px}
+.card h2{font-size:16px;color:#00315e;margin-bottom:14px;border-left:4px solid #0057b8;padding-left:10px}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid #eef1f5}
+th{background:#f7f9fc;color:#556;font-weight:600;font-size:13px}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;font-size:12px;padding:2px 9px;border-radius:10px;background:#e6f4ec;color:#0a8f45}
+
+/* 页脚 */
+footer{background:#00315e;color:#8fa9c6;font-size:13px;padding:28px 0;margin-top:20px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:#b9cde6}
+footer .fine{margin-top:14px;color:#5d7899;font-size:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:14px}
+
+/* 屏幕外隐藏入口 */
+.ghost{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
+
+/* 无障碍模式 */
+body.underline a{text-decoration:underline}
+body.reduce-motion *,body.reduce-motion *::before,body.reduce-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.hc{background:#000;color:#fff}
+body.hc a{color:#ffe600}
+body.hc .topbar,body.hc header,body.hc nav,body.hc footer{background:#000;color:#fff;border-color:#fff}
+body.hc nav a,body.hc .tools button,body.hc .hotline,body.hc .hotline strong{color:#fff}
+body.hc nav a.active{background:#ffe600;color:#000}
+body.hc .notice{background:#111;color:#fff;border-color:#fff}
+body.hc .notice .tag{background:#ffe600;color:#000}
+body.hc .crumb{background:#000;color:#fff;border-color:#444}
+body.hc .crumb a{color:#ffe600}
+body.hc .card{background:#111;color:#fff;box-shadow:none;border:1px solid #fff}
+body.hc .card h2{color:#ffe600;border-left-color:#ffe600}
+body.hc th{background:#222;color:#fff}
+body.hc td{border-color:#444}
+body.hc .pill{background:#333;color:#ffe600}
+
+/* 无障碍面板 */
+.a11y-panel{position:fixed;top:44px;right:12px;width:300px;max-width:calc(100vw - 24px);background:#fff;color:#1f2328;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:9000;overflow:hidden;border:1px solid #d7dde5}
+.a11y-panel[hidden]{display:none}
+.a11y-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#00315e;color:#fff}
+.a11y-head strong{font-size:15px}
+.a11y-head button{background:none;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:0 4px}
+.a11y-body{padding:12px 14px;max-height:70vh;overflow:auto}
+.a11y-body fieldset{border:0;margin-bottom:14px}
+.a11y-body legend{font-size:13px;font-weight:700;color:#00315e;margin-bottom:6px}
+.a11y-body label{display:block;font-size:14px;padding:5px 0;cursor:pointer}
+.a11y-body input{margin-right:8px}
+.a11y-body .row{display:flex;gap:6px;flex-wrap:wrap}
+.a11y-body .row button{flex:1;min-width:56px;padding:7px 0;font:inherit;font-size:13px;border:1px solid #c4cdd8;background:#f7f9fc;border-radius:4px;cursor:pointer}
+.a11y-body .row button[aria-pressed="true"]{background:#0057b8;color:#fff;border-color:#0057b8}
+.a11y-body .reset{width:100%;margin-top:6px;padding:8px;font:inherit;border:1px solid #c4cdd8;background:#fff;border-radius:4px;cursor:pointer;color:#555}
+body.hc .a11y-panel{background:#111;color:#fff;border-color:#fff}
+body.hc .a11y-body legend{color:#ffe600}
+body.hc .a11y-body .row button{background:#222;color:#fff;border-color:#666}
+body.hc .a11y-body .row button[aria-pressed="true"]{background:#ffe600;color:#000}
+body.hc .a11y-body .reset{background:#222;color:#fff;border-color:#666}
