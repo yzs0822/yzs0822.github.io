@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网页解谜合集 | 个人主页</title>
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #0a0e14;
+    --bg-2: #111823;
+    --bg-3: #1a2332;
+    --fg: #c9d1d9;
+    --green: #00ff9d;
+    --cyan: #4dd0e1;
+    --dim: #6e7681;
+    --border: #1f2937;
+    --red: #ff5370;
+    --orange: #ffa657;
+    --purple: #bc8cff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+}
+/* 网格背景 */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,255,157,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,157,0.025) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+    z-index: 0;
+}
+/* 扫描线 */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.12) 0px,
+        rgba(0,0,0,0.12) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.35;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ============ 顶部导航 ============ */
+.topnav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(10,14,20,0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+.topnav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+.topnav a {
+    color: var(--dim);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.topnav a:hover { color: var(--green); }
+.topnav .brand {
+    color: var(--green);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.topnav .brand i { margin-right: 6px; }
+.topnav .right { display: flex; gap: 22px; }
+.topnav .right a.active { color: var(--green); }
+
+/* ============ Hero ============ */
+.hero {
+    padding: 90px 0 60px;
+    position: relative;
+}
+.hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.hero .path {
+    font-size: 0.8rem;
+    color: var(--dim);
+    margin-bottom: 26px;
+}
+.hero .path .sep { color: var(--border); margin: 0 8px; }
+.hero .path .cur { color: var(--green); }
+
+.hero h1 {
+    font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+    line-height: 1.15;
+}
+.hero h1 .accent {
+    color: var(--green);
+    text-shadow: 0 0 22px rgba(0,255,157,0.35);
+}
+.hero h1 .caret {
+    display: inline-block;
+    width: 14px;
+    height: 0.85em;
+    background: var(--green);
+    vertical-align: -0.08em;
+    margin-left: 6px;
+    animation: blink 1.05s steps(1) infinite;
+}
+@keyframes blink { 0%,49%{opacity:1;} 50%,100%{opacity:0;} }
+
+.hero .sub {
+    color: var(--dim);
+    font-size: 1rem;
+    max-width: 640px;
+    line-height: 1.9;
+}
+.hero .sub .hl { color: var(--cyan); }
+
+/* 终端条 */
+.term {
+    margin-top: 44px;
+    background-color: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+}
+.term-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px;
+    background-color: var(--bg-3);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.76rem;
+    color: var(--dim);
+}
+.term-head .dot { width: 11px; height: 11px; border-radius: 50%; }
+.term-head .dot.r { background: #ff5f57; }
+.term-head .dot.y { background: #febc2e; }
+.term-head .dot.g { background: #28c840; }
+.term-head .title { margin-left: 10px; letter-spacing: 0.5px; }
+.term-body {
+    padding: 22px 22px 26px;
+    font-size: 0.88rem;
+    line-height: 2;
+}
+.term-body .pr { color: var(--green); margin-right: 8px; }
+.term-body .cm { color: var(--dim); }
+.term-body .cy { color: var(--cyan); }
+.term-body .or { color: var(--orange); }
+.term-body .pu { color: var(--purple); }
+.term-cursor {
+    display: inline-block;
+    width: 8px; height: 15px;
+    background: var(--green);
+    vertical-align: middle;
+    margin-left: 2px;
+    animation: blink 1.05s steps(1) infinite;
+}
+
+/* ============ 区块标题 ============ */
+.section {
+    padding: 70px 0;
+    position: relative;
+}
+.section-head {
+    margin-bottom: 40px;
+}
+.section-head .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: var(--green);
+    border: 1px solid var(--green);
+    padding: 3px 12px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+.section-head h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+.section-head p {
+    color: var(--dim);
+    font-size: 0.92rem;
+}
+
+/* ============ 游戏卡片 ============ */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 22px;
+}
+.card {
+    position: relative;
+    background-color: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.28s, border-color 0.28s, box-shadow 0.28s;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--green);
+    box-shadow: 0 18px 44px rgba(0,255,157,0.12);
+}
+.card-thumb {
+    position: relative;
+    height: 168px;
+    overflow: hidden;
+    background-color: var(--bg-3);
+}
+.card-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+    transition: transform 0.5s, opacity 0.3s;
+}
+.card:hover .card-thumb img {
+    transform: scale(1.06);
+    opacity: 0.9;
+}
+.card-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10,14,20,0.85) 100%);
+}
+.card-badge {
+    position: absolute;
+    top: 12px; left: 12px;
+    z-index: 2;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    padding: 4px 11px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: var(--bg);
+}
+.b-easy   { background-color: var(--green); }
+.b-medium { background-color: var(--orange); }
+.b-hard   { background-color: var(--red); color: #fff; }
+.b-new    { background-color: var(--purple); color: #fff; }
+
+.card-body {
+    padding: 20px 20px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.card-body h3 {
+    font-size: 1.05rem;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+.card-body .desc {
+    color: var(--dim);
+    font-size: 0.84rem;
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 18px;
+}
+.card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 0.75rem;
+    color: var(--dim);
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+    margin-bottom: 16px;
+}
+.card-meta i { color: var(--green); margin-right: 5px; }
+
+.card-btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    color: var(--green);
+    background-color: transparent;
+    border: 1px solid var(--green);
+    padding: 8px 18px;
+    border-radius: 4px;
+    transition: all 0.22s;
+}
+.card:hover .card-btn {
+    background-color: var(--green);
+    color: var(--bg);
+    box-shadow: 0 0 22px rgba(0,255,157,0.35);
+}
+
+/* ============ 规则区 ============ */
+.rules {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+.rule {
+    background-color: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+}
+.rule:hover {
+    border-color: var(--green);
+    transform: translateY(-3px);
+}
+.rule .idx {
+    font-size: 0.72rem;
+    color: var(--green);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    display: block;
+}
+.rule i.ico {
+    font-size: 1.15rem;
+    color: var(--green);
+    margin-bottom: 14px;
+    display: block;
+}
+.rule h4 {
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.rule p {
+    color: var(--dim);
+    font-size: 0.82rem;
+    line-height: 1.75;
+    margin: 0;
+}
+.rule p .k {
+    color: var(--cyan);
+    background-color: rgba(77,208,225,0.08);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.78rem;
+}
+
+/* ============ 注意事项 ============ */
+.notice {
+    margin-top: 32px;
+    background-color: rgba(255,83,112,0.06);
+    border-left: 3px solid var(--red);
+    border-radius: 0 6px 6px 0;
+    padding: 18px 22px;
+    font-size: 0.84rem;
+    color: #ffb3c1;
+    line-height: 1.8;
+}
+.notice strong { color: var(--red); }
+.notice code {
+    background-color: rgba(255,255,255,0.06);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--orange);
+    font-size: 0.8rem;
+}
+
+/* ============ 页脚 ============ */
+.footer {
+    padding: 44px 0 60px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 0.8rem;
+}
+.footer a {
+    color: var(--dim);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer a:hover { color: var(--green); }
+.footer .quote {
+    margin-bottom: 14px;
+    font-style: italic;
+    color: #4b5563;
+    font-size: 0.78rem;
+}
+
+@media (max-width: 640px) {
+    .hero { padding: 60px 0 40px; }
+    .section { padding: 50px 0; }
+    .topnav .right { gap: 14px; font-size: 0.78rem; }
+    .card-thumb { height: 148px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<div class="topnav">
+    <div class="topnav-inner">
+        <a href="index.html" class="brand"><i class="fas fa-terminal"></i>啸游戏 | SMALL GAME</a>
+        
+    </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="path">
+            ~ <span class="sep">/</span> puzzle <span class="sep">/</span> <span class="cur">index</span>
+        </div>
+        <h1>网页解谜<span class="accent">合集</span><span class="caret"></span></h1>
+        <p class="sub">
+            这里收录了我做的各种 <span class="hl">网页解谜游戏</span>。
+            每一款都是独立的 HTML 页面，点击卡片即可进入。
+            不需要下载，不需要注册，打开就能玩。
+        </p>
+
+        <div class="term">
+            <div class="term-head">
+                <span class="dot r"></span>
+                <span class="dot y"></span>
+                <span class="dot g"></span>
+                <span class="title">puzzle@localhost — bash</span>
+            </div>
+            <div class="term-body">
+                <div><span class="pr">$</span> ls -la ./games</div>
+                <div><span class="cm"># 找到 8 个游戏，正在加载索引...</span></div>
+                <div><span class="pr">$</span> cat README.md</div>
+                <div><span class="cy">规则：</span>答案可能藏在任何地方。</div>
+                <div><span class="or">提示：</span>F12 是你的好朋友。</div>
+                <div><span class="pu">注意：</span>卡住了不要紧，慢慢来。</div>
+                <div><span class="pr">$</span> <span class="term-cursor"></span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 游戏列表 -->
+<section class="section" id="games">
+    <div class="container">
+        <div class="section-head">
+            <span class="tag">GAMES</span>
+            <h2>全部游戏</h2>
+            <p>点击卡片进入对应游戏</p>
+        </div>
+
+        <div class="grid">
+
+            <!-- 游戏 1 -->
+            
+
+            <!-- 游戏 2 -->
+            
+
+            <!-- 游戏 3 -->
+            
+
+            
+            
+
+            <!-- 游戏 5 -->
+            <a href="xingangmetro/xingangmetro.html" class="card">
+                <div class="card-thumb">
+                    <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=700&amp;h=420&amp;fit=crop&amp;auto=format" alt="找不同">
+                    <span class="card-badge b-easy">一般</span>
+                </div>
+                <div class="card-body">
+                    <h3>新港市轨道交通集团</h3>
+                    <p class="desc">“官方”网页，找到蹊跷并发现问题</p>
+                    <div class="card-meta">
+                        <span><i class="fas fa-signal"></i>一般</span>
+                        
+                        <span><i class="fas fa-eye"></i>观察</span>
+                    </div>
+                    <span class="card-btn">开始游戏 <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            
+            
+
+            
+            
+
+            <!-- 游戏 8 -->
+            
+
+        </div>
+    </div>
+</section>
+
+<!-- 规则区 -->
+<section class="section" id="rules">
+    <div class="container">
+        <div class="section-head">
+            <span class="tag">HOW TO PLAY</span>
+            <h2>怎么玩</h2>
+            <p>没玩过解谜游戏？看这里就够了</p>
+        </div>
+
+        <div class="rules">
+
+            <div class="rule">
+                <span class="idx">STEP 01</span>
+                <i class="fas fa-mouse-pointer ico"></i>
+                <h4>选一个游戏</h4>
+                <p>在上面挑一个感兴趣的卡片，点击「开始游戏」进入。每个游戏都是独立的，顺序随意。</p>
+            </div>
+
+            <div class="rule">
+                <span class="idx">STEP 02</span>
+                <i class="fas fa-search ico"></i>
+                <h4>仔细观察页面</h4>
+                <p>答案可能藏在任何地方：页面文字、图片、颜色、按钮、甚至 URL 地址栏。别放过任何一个细节。</p>
+            </div>
+
+            <div class="rule">
+                <span class="idx">STEP 03</span>
+                <i class="fas fa-code ico"></i>
+                <h4>善用开发者工具</h4>
+                <p>按 <span class="k">F12</span> 或右键「查看网页源代码」。HTML、CSS、JS、控制台、网络请求，都是线索来源。</p>
+            </div>
+
+            <div class="rule">
+                <span class="idx">STEP 04</span>
+                <i class="fas fa-keyboard ico"></i>
+                <h4>输入你的答案</h4>
+                <p>找到答案后，在输入框里填写。通常<span class="k">不区分大小写</span>，去掉空格，只填关键词。</p>
+            </div>
+
+            <div class="rule">
+                <span class="idx">STEP 05</span>
+                <i class="fas fa-lightbulb ico"></i>
+                <h4>卡住了怎么办</h4>
+                <p>大部分关卡都有<span class="k">隐藏提示</span>，藏在源代码注释里。实在想不出来，可以刷新页面重来。</p>
+            </div>
+
+            <div class="rule">
+                <span class="idx">STEP 06</span>
+                <i class="fas fa-save ico"></i>
+                <h4>进度会保存</h4>
+                <p>你的通关进度会保存在浏览器本地。换设备或清除浏览器数据后会重置，属于正常现象。</p>
+            </div>
+
+        </div>
+
+        <div class="notice">
+            <strong>⚠ 注意事项：</strong>
+            本合集所有游戏纯属娱乐，不涉及任何真实信息。
+            请勿在输入框中填写真实密码、账号或其他敏感信息。
+            所有答案均为游戏内虚构内容。
+            如果某个页面显示异常，试试用 <code>Chrome</code> 或 <code>Edge</code> 最新版本打开。
+        </div>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<div class="footer">
+    <div class="container">
+        <p class="quote">「所有答案，都在你看得到的地方。」 太懒了，本页由我们亲爱的</p>
+<a class="quote" href="https://deepseek.com">Deepseek 撰写</a>
+        <p>© 2026 网页解谜合集 · <a href="index.html">返回个人主页</a></p>
+    </div>
+</div>
+
+
+</body></html>
