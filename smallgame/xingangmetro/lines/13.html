@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13号线 - 新港市轨道交通集团</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#e8eaed;color:#1f2328;line-height:1.65}
+  a{color:#0057b8;text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+  :focus-visible{outline:3px solid #ffb100;outline-offset:2px;border-radius:2px}
+  .skip-link{position:absolute;left:-9999px;top:0;background:#ffb100;color:#000;padding:10px 16px;z-index:9999;font-weight:700}
+  .skip-link:focus{left:8px;top:8px}
+
+  .topbar{background:#3d4757;color:#c3cbd8;font-size:13px}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:32px;gap:12px}
+  .topbar .left{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tools{display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .tools button{background:none;border:0;color:#c3cbd8;font:inherit;cursor:pointer;padding:2px 4px;border-radius:2px}
+  .tools button:hover{color:#fff;text-decoration:underline}
+  .tools .sep{color:#5c6878}
+
+  header{background:#4a5568;color:#fff}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px;flex-wrap:wrap;gap:12px}
+  .logo{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:700;letter-spacing:.5px}
+  .logo .mark{width:36px;height:36px;border-radius:50%;background:#8a94a3;color:#2d3748;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;flex:none}
+  .logo small{display:block;font-size:11px;font-weight:400;color:#c3cbd8;letter-spacing:2px}
+  .hotline{font-size:13px;color:#c3cbd8;text-align:right}
+  .hotline strong{display:block;font-size:20px;color:#fff;letter-spacing:1px}
+
+  nav{background:#3d4757;border-top:1px solid rgba(255,255,255,.1)}
+  nav .wrap{display:flex;flex-wrap:wrap}
+  nav a{color:#d8dee8;padding:13px 20px;font-size:15px;display:block}
+  nav a:hover{background:#4a5568;color:#fff;text-decoration:none}
+  nav a.active{background:#1f2328;color:#ffb100;font-weight:600}
+
+  .warn-banner{background:#fdecea;border-bottom:1px solid #f5c6cb;color:#721c24}
+  .warn-banner .wrap{padding:11px 16px;font-size:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .warn-banner .tag{background:#d62828;color:#fff;font-size:12px;padding:2px 8px;border-radius:3px;white-space:nowrap}
+
+  .crumb{background:#fff;border-bottom:1px solid #e6eaf0;font-size:13px;color:#667}
+  .crumb .wrap{padding:11px 16px}
+  .crumb a{color:#667}
+  .crumb span{margin:0 6px;color:#aab}
+
+  main{padding:26px 0 40px}
+  .title-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  h1{font-size:26px;letter-spacing:2px}
+  .badge{font-size:12px;padding:3px 10px;border-radius:10px;background:#e2e5ea;color:#556;border:1px solid #cfd4dc}
+  .lede{color:#667;font-size:14px;margin-bottom:20px}
+
+  .card{background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.07);padding:20px;margin-bottom:20px}
+  .card h2{font-size:16px;color:#2d3748;margin-bottom:14px;border-left:4px solid #556;padding-left:10px}
+
+  dl.info{display:grid;grid-template-columns:130px 1fr;gap:10px 16px;font-size:14px}
+  dl.info dt{color:#778;font-weight:600}
+  dl.info dd{color:#1f2328}
+  .dim{color:#aab}
+
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #eef1f5}
+  th{background:#f7f9fc;color:#556;font-weight:600;font-size:13px}
+  tr:last-child td{border-bottom:0}
+  .last-station{color:#721c24;font-weight:700}
+  .status-off{color:#aab;font-size:13px}
+  .status-end{color:#721c24;font-size:13px;font-weight:600}
+
+  .quote{background:#f7f9fc;border-left:4px solid #8a94a3;padding:14px 18px;font-size:14px;color:#445;margin-top:8px;line-height:1.8}
+  .quote em{color:#721c24;font-style:normal;font-weight:600}
+
+  .syslog{font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:12.5px;background:#1f2328;color:#9fb3c8;border-radius:6px;padding:14px 16px;line-height:1.9;overflow:auto}
+  .syslog .t{color:#5d7899}
+  .syslog .w{color:#ffb100}
+  .syslog .e{color:#ff6b6b}
+
+  .back{display:inline-block;margin-top:6px;font-size:14px}
+
+  footer{background:#2d3748;color:#8fa9c6;font-size:13px;padding:28px 0;margin-top:20px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{color:#b9cde6}
+  footer .fine{margin-top:14px;color:#5d7899;font-size:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:14px}
+
+  .ghost{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
+  .hidden-link{color:inherit;cursor:text}
+  .hidden-link:hover{color:#0057b8}
+
+  body.underline a{text-decoration:underline}
+  body.reduce-motion *,body.reduce-motion *::before,body.reduce-motion *::after{animation:none!important;transition:none!important}
+  body.hc{background:#000;color:#fff}
+  body.hc a{color:#ffe600}
+  body.hc .topbar,body.hc header,body.hc nav,body.hc footer{background:#000;color:#fff;border-color:#fff}
+  body.hc nav a,body.hc .tools button{color:#fff}
+  body.hc nav a.active{background:#ffe600;color:#000}
+  body.hc .warn-banner{background:#200;color:#ff9;border-color:#fff}
+  body.hc .crumb{background:#000;color:#fff;border-color:#444}
+  body.hc .crumb a{color:#ffe600}
+  body.hc .card{background:#111;color:#fff;box-shadow:none;border:1px solid #fff}
+  body.hc .card h2{color:#ffe600;border-color:#ffe600}
+  body.hc dl.info dt{color:#ccc}
+  body.hc dl.info dd{color:#fff}
+  body.hc th{background:#222;color:#fff}
+  body.hc td{border-color:#444}
+  body.hc .quote{background:#111;color:#eee;border-color:#ffe600}
+  body.hc .syslog{background:#000;border:1px solid #fff}
+
+  .a11y-panel{position:fixed;top:44px;right:12px;width:300px;max-width:calc(100vw - 24px);background:#fff;color:#1f2328;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:9000;overflow:hidden;border:1px solid #d7dde5}
+  .a11y-panel[hidden]{display:none}
+  .a11y-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#2d3748;color:#fff}
+  .a11y-head strong{font-size:15px}
+  .a11y-head button{background:none;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:0 4px}
+  .a11y-body{padding:12px 14px;max-height:70vh;overflow:auto}
+  .a11y-body fieldset{border:0;margin-bottom:14px}
+  .a11y-body legend{font-size:13px;font-weight:700;color:#2d3748;margin-bottom:6px}
+  .a11y-body label{display:block;font-size:14px;padding:5px 0;cursor:pointer}
+  .a11y-body input{margin-right:8px}
+  .a11y-body .row{display:flex;gap:6px;flex-wrap:wrap}
+  .a11y-body .row button{flex:1;min-width:56px;padding:7px 0;font:inherit;font-size:13px;border:1px solid #c4cdd8;background:#f7f9fc;border-radius:4px;cursor:pointer}
+  .a11y-body .row button[aria-pressed="true"]{background:#4a5568;color:#fff;border-color:#4a5568}
+  .a11y-body .reset{width:100%;margin-top:6px;padding:8px;font:inherit;border:1px solid #c4cdd8;background:#fff;border-radius:4px;cursor:pointer;color:#555}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link" data-i18n="a11y.skip">跳到主要内容</a>
+
+<!-- 本页由夜间调度系统自动生成 · 工单 XG-2019-0314 · 请勿删除 -->
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="left" data-i18n="top.left">新港市轨道交通集团 · 内部页面</span>
+    <div class="tools">
+      <button type="button" id="btnA11y" data-i18n="top.a11y">无障碍浏览</button>
+      <span class="sep">｜</span>
+      <button type="button" id="btnLang">繁體</button>
+      <span class="sep">｜</span>
+      <button type="button" id="btnEn">EN</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="logo">
+      <div class="mark" data-i18n="logo.mark">港</div>
+      <div>
+        <span data-i18n="logo.name">新港市轨道交通集团</span>
+        <small data-i18n="logo.sub">XINGANG METRO</small>
+      </div>
+    </div>
+    <div class="hotline">
+      <span data-i18n="head.hotline">服务热线</span>
+      <strong>400-013-1314</strong>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="主导航">
+  <div class="wrap">
+    <a href="../index.html" data-i18n="nav.home">首页</a>
+    <a href="index.html" data-i18n="nav.lines">线路查询</a>
+    <a href="../timetable.html" data-i18n="nav.time">时刻表</a>
+    <a href="../news/index.html" data-i18n="nav.news">新闻公告</a>
+    <a href="../lostfound.html" data-i18n="nav.lost">失物招领</a>
+    <a href="../staff/login.html" data-i18n="nav.staff">员工登录</a>
+  </div>
+</nav>
+
+<div class="warn-banner" role="alert">
+  <div class="wrap">
+    <span class="tag" data-i18n="warn.tag">已停用</span>
+    <span data-i18n="warn.text">本页面已于 2019-03-14 00:13 停用，内容不再更新。</span>
+  </div>
+</div>
+
+<div class="crumb">
+  <div class="wrap">
+    <a href="../index.html" data-i18n="nav.home">首页</a><span>/</span>
+    <a href="index.html" data-i18n="nav.lines">线路查询</a><span>/</span>
+    <span>13号线</span>
+  </div>
+</div>
+
+<main id="main">
+  <div class="wrap">
+    <div class="title-row">
+      <h1 data-i18n="page.title">13号线</h1>
+      <span class="badge" data-i18n="page.badge">未开通</span>
+    </div>
+    <p class="lede" data-i18n="page.lede">夜间调度专线 · 本页仅内部留档。</p>
+
+    <div class="card">
+      <h2 data-i18n="sec.basic">线路信息</h2>
+      <dl class="info">
+        <dt data-i18n="k.no">线路编号</dt><dd>13</dd>
+        <dt data-i18n="k.status">运营状态</dt><dd data-i18n="v.status">未开通</dd>
+        <dt data-i18n="k.origin">起点站</dt><dd data-i18n="v.origin">新港北站</dd>
+        <dt data-i18n="k.term">终点站</dt><dd class="last-station" data-i18n="v.term">归墟</dd>
+        <dt data-i18n="k.first">首班车</dt><dd class="dim">—</dd>
+        <dt data-i18n="k.last">末班车</dt><dd>00:13</dd>
+        <dt data-i18n="k.platform">站台</dt><dd data-i18n="v.platform">13号站台（已封闭）</dd>
+        <dt data-i18n="k.dispatcher">调度员</dt>
+        <dd><a class="hidden-link" href="../staff/login.html">周默</a> · <span data-i18n="v.ext">分机 13</span></dd>
+        <dt data-i18n="k.staffno">工号</dt><dd>314</dd>
+      </dl>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="sec.stations">站点列表</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-i18n="th.name">站名</th>
+            <th data-i18n="th.transfer">换乘</th>
+            <th data-i18n="th.status">状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td data-i18n="s1">新港北站</td><td>1号线</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>2</td><td data-i18n="s2">梧桐里</td><td>—</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>3</td><td data-i18n="s3">白鹭洲</td><td>—</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>4</td><td data-i18n="s4">市第二医院</td><td>—</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>5</td><td data-i18n="s5">老码头</td><td>—</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>6</td><td data-i18n="s6">钟楼</td><td>—</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>7</td><td data-i18n="s7">文昌路</td><td>—</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>8</td><td data-i18n="s8">松林路</td><td>4号线</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>9</td><td data-i18n="s9">望山</td><td>—</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>10</td><td data-i18n="s10">隧道口</td><td>—</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>11</td><td data-i18n="s11">长夜</td><td>—</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>12</td><td data-i18n="s12">回声</td><td>—</td><td class="status-off" data-i18n="so">未开通</td></tr>
+          <tr><td>13</td><td class="last-station" data-i18n="s13">归墟</td><td>—</td><td class="status-end" data-i18n="se">永久停靠</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="sec.notice">调度备忘</h2>
+      <div class="quote">
+        <p data-i18n="q1">末班车发出后，请勿在 13 号站台停留。</p>
+        <p data-i18n="q2">如遇乘客询问 13 号线，统一回答：<em>“新港没有 13 号线。”</em></p>
+        <p data-i18n="q3">乘客档案如出现“无此乘客”，属正常现象，无需上报。</p>
+        <p data-i18n="q4">如遇调度异常，请勿联系任何人。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="sec.log">系统日志</h2>
+      <div class="syslog" role="log">
+        <div><span class="t">[2019-03-14 00:13:00]</span> 13号线 末班车 已发出。</div>
+        <div><span class="t">[2019-03-14 00:13:07]</span> 隧道信号丢失 7 秒。</div>
+        <div><span class="t">[2019-03-14 00:13:08]</span> 乘客名单：47 人。</div>
+        <div><span class="t">[2019-03-14 00:13:09]</span> 实际下车：46 人。</div>
+        <div><span class="t">[2019-03-14 00:13:10]</span> <span class="w">缺失乘客：林晚。</span></div>
+        <div><span class="t">[2019-03-14 00:13:11]</span> <span class="e">系统自动更正：无此乘客。</span></div>
+        <div><span class="t">[2019-03-14 00:13:12]</span> 档案封存。页面停用。</div>
+      </div>
+    </div>
+
+    <a class="back" href="index.html" data-i18n="back">← 返回线网图</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div data-i18n="foot.org">新港市轨道交通集团 · 夜间调度系统</div>
+      <div><span data-i18n="head.hotline">服务热线</span>：400-013-1314</div>
+    </div>
+    <div>
+      <a href="index.html" data-i18n="nav.lines">线路查询</a> ·
+      <a href="../timetable.html" data-i18n="nav.time">时刻表</a> ·
+      <a href="../staff/login.html" data-i18n="nav.staff">员工登录</a>
+    </div>
+  </div>
+  <div class="wrap fine" data-i18n="foot.fine">
+    © 2019 新港市轨道交通集团 · 本页数据由夜间调度系统自动生成 ｜ 本网站为虚构解谜作品。
+  </div>
+</footer>
+
+<a class="ghost" href="../staff/login.html" aria-hidden="true" tabindex="-1">周默</a>
+
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-modal="false" aria-label="无障碍设置" hidden>
+  <div class="a11y-head">
+    <strong id="a11yTitle">无障碍设置</strong>
+    <button type="button" id="a11yClose" aria-label="关闭">×</button>
+  </div>
+  <div class="a11y-body">
+    <fieldset>
+      <legend id="a11yFontSize">字体大小</legend>
+      <div class="row" role="group">
+        <button type="button" data-zoom="1">标准</button>
+        <button type="button" data-zoom="1.15">大</button>
+        <button type="button" data-zoom="1.3">特大</button>
+        <button type="button" data-zoom="1.5">超大</button>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend id="a11yDisplay">显示</legend>
+      <label><input type="checkbox" id="optContrast"> 高对比度</label>
+      <label><input type="checkbox" id="optUnderline"> 链接下划线</label>
+      <label><input type="checkbox" id="optMotion"> 减弱动画</label>
+    </fieldset>
+    <button type="button" class="reset" id="a11yReset">恢复默认</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/cn2t.js" defer></script>
+<script>
+(function () {
+  "use strict";
+  var LK = "metro.lang", AK = "metro.a11y";
+  var lang = localStorage.getItem(LK) || "zh-CN";
+  var a11y = {};
+  try { a11y = JSON.parse(localStorage.getItem(AK) || "{}") || {}; } catch (e) {}
+
+  var I18N = {
+    en: {
+      "a11y.skip": "Skip to main content",
+      "top.left": "Xingang Metro Group · Internal Page",
+      "top.a11y": "Accessibility",
+      "logo.mark": "X",
+      "logo.name": "Xingang Metro Group",
+      "logo.sub": "XINGANG METRO",
+      "head.hotline": "Service Hotline",
+      "nav.home": "Home", "nav.lines": "Lines", "nav.time": "Timetable",
+      "nav.news": "News", "nav.lost": "Lost & Found", "nav.staff": "Staff Login",
+      "warn.tag": "Disabled",
+      "warn.text": "This page was disabled at 00:13 on 2019-03-14 and is no longer updated.",
+      "page.title": "Line 13",
+      "page.badge": "Not in service",
+      "page.lede": "Night dispatch line · Internal archive only.",
+      "sec.basic": "Line Information",
+      "k.no": "Line No.", "k.status": "Status", "k.origin": "Origin", "k.term": "Terminal",
+      "k.first": "First train", "k.last": "Last train", "k.platform": "Platform",
+      "k.dispatcher": "Dispatcher", "k.staffno": "Staff No.",
+      "v.status": "Not in service",
+      "v.origin": "Xingang North",
+      "v.term": "Guixu",
+      "v.platform": "Platform 13 (sealed)",
+      "v.ext": "Ext. 13",
+      "sec.stations": "Station List",
+      "th.name": "Station", "th.transfer": "Transfer", "th.status": "Status",
+      "s1": "Xingang North", "s2": "Wutong Lane", "s3": "Egret Isle",
+      "s4": "Municipal Second Hospital", "s5": "Old Wharf", "s6": "Bell Tower",
+      "s7": "Wenchang Road", "s8": "Songlin Road", "s9": "Wangshan",
+      "s10": "Tunnel Mouth", "s11": "Long Night", "s12": "Echo", "s13": "Guixu",
+      "so": "Not in service", "se": "Permanent stop",
+      "sec.notice": "Dispatch Notes",
+      "q1": "Do not stay on Platform 13 after the last train departs.",
+      "q2": "If a passenger asks about Line 13, answer: \"There is no Line 13 in Xingang.\"",
+      "q3": "If a passenger record shows \"no such passenger\", it is normal. No report needed.",
+      "q4": "If dispatch anomaly occurs, contact no one.",
+      "sec.log": "System Log",
+      "back": "← Back to network map",
+      "foot.org": "Xingang Metro Group · Night Dispatch System",
+      "foot.fine": "© 2019 Xingang Metro Group · Generated by the night dispatch system ｜ This site is a fictional puzzle work."
+    }
+  };
+
+  function snapshot() {
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      if (el.dataset.zhText == null) el.dataset.zhText = el.textContent;
+    });
+  }
+  function renderLanguage() {
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      if (el.dataset.zhText != null) el.textContent = el.dataset.zhText;
+    });
+    if (lang === "en") {
+      document.documentElement.lang = "en";
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        var k = el.dataset.i18n;
+        if (I18N.en[k]) el.textContent = I18N.en[k];
+      });
+      document.title = "Line 13 - Xingang Metro Group";
+    } else if (lang === "zh-TW" && window.OpenCC) {
+      document.documentElement.lang = "zh-Hant";
+      var convert = OpenCC.Converter({ from: "cn", to: "tw" });
+      toTraditional(document.body, convert);
+      document.title = convert(document.title);
+    } else {
+      document.documentElement.lang = "zh-CN";
+    }
+    updateLangButtons();
+  }
+  function toTraditional(root, convert) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var p = n.parentNode;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        var t = p.nodeName;
+        if (t === "SCRIPT" || t === "STYLE" || t === "NOSCRIPT") return NodeFilter.FILTER_REJECT;
+        if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes = [], n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(function (x) { x.nodeValue = convert(x.nodeValue); });
+    root.querySelectorAll("[placeholder],[title],[aria-label],[alt]").forEach(function (el) {
+      ["placeholder", "title", "aria-label", "alt"].forEach(function (a) {
+        if (el.hasAttribute(a)) el.setAttribute(a, convert(el.getAttribute(a)));
+      });
+    });
+  }
+  function updateLangButtons() {
+    var bl = document.getElementById("btnLang"), be = document.getElementById("btnEn");
+    if (lang === "zh-TW") { bl.textContent = "简体"; be.textContent = "EN"; }
+    else if (lang === "en") { bl.textContent = "繁體"; be.textContent = "中文"; }
+    else { bl.textContent = "繁體"; be.textContent = "EN"; }
+  }
+  function setLang(v) { localStorage.setItem(LK, v); location.reload(); }
+
+  function applyA11y() {
+    document.documentElement.style.zoom = a11y.zoom && a11y.zoom !== 1 ? a11y.zoom : "";
+    document.body.classList.toggle("hc", !!a11y.contrast);
+    document.body.classList.toggle("underline", !!a11y.underline);
+    document.body.classList.toggle("reduce-motion", !!a11y.motion);
+    document.querySelectorAll("[data-zoom]").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(parseFloat(b.dataset.zoom) === (a11y.zoom || 1)));
+    });
+    var c = document.getElementById("optContrast"), u = document.getElementById("optUnderline"), m = document.getElementById("optMotion");
+    if (c) c.checked = !!a11y.contrast;
+    if (u) u.checked = !!a11y.underline;
+    if (m) m.checked = !!a11y.motion;
+  }
+  function saveA11y() { localStorage.setItem(AK, JSON.stringify(a11y)); }
+
+  function localizeA11yPanel() {
+    if (lang === "zh-CN") return;
+    var isEn = lang === "en", isTw = lang === "zh-TW";
+    var map = {
+      a11yTitle: { en: "Accessibility", tw: "無障礙設定" },
+      a11yFontSize: { en: "Text size", tw: "字體大小" },
+      a11yDisplay: { en: "Display", tw: "顯示" },
+      a11yReset: { en: "Reset to default", tw: "恢復預設" }
+    };
+    Object.keys(map).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = isEn ? map[id].en : (isTw ? map[id].tw : el.textContent);
+    });
+    var labels = { optContrast: ["High contrast", "高對比度"], optUnderline: ["Underline links", "連結底線"], optMotion: ["Reduce motion", "減弱動畫"] };
+    Object.keys(labels).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var t = isEn ? labels[id][0] : (isTw ? labels[id][1] : null);
+      if (!t) return;
+      el.parentNode.childNodes.forEach(function (n) { if (n.nodeType === 3 && n.nodeValue.trim()) n.nodeValue = " " + t; });
+    });
+    var z = { "1": ["Standard", "標準"], "1.15": ["Large", "大"], "1.3": ["Extra large", "特大"], "1.5": ["Huge", "超大"] };
+    document.querySelectorAll("[data-zoom]").forEach(function (b) {
+      var v = z[b.dataset.zoom]; if (!v) return;
+      b.textContent = isEn ? v[0] : (isTw ? v[1] : b.textContent);
+    });
+    var cb = document.getElementById("a11yClose");
+    if (cb) cb.setAttribute("aria-label", isEn ? "Close" : "關閉");
+  }
+
+  function init() {
+    snapshot(); renderLanguage(); applyA11y(); localizeA11yPanel();
+    var btnA11y = document.getElementById("btnA11y"), panel = document.getElementById("a11yPanel"), closeBtn = document.getElementById("a11yClose");
+    btnA11y.addEventListener("click", function () {
+      var show = panel.hidden;
+      panel.hidden = !show;
+      btnA11y.setAttribute("aria-expanded", String(show));
+      if (show) { var f = panel.querySelector("button, input"); if (f) f.focus(); }
+    });
+    closeBtn.addEventListener("click", function () {
+      panel.hidden = true; btnA11y.setAttribute("aria-expanded", "false"); btnA11y.focus();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !panel.hidden) {
+        panel.hidden = true; btnA11y.setAttribute("aria-expanded", "false"); btnA11y.focus();
+      }
+    });
+    panel.querySelectorAll("[data-zoom]").forEach(function (b) {
+      b.addEventListener("click", function () { a11y.zoom = parseFloat(b.dataset.zoom); saveA11y(); applyA11y(); });
+    });
+    document.getElementById("optContrast").addEventListener("change", function (e) { a11y.contrast = e.target.checked; saveA11y(); applyA11y(); });
+    document.getElementById("optUnderline").addEventListener("change", function (e) { a11y.underline = e.target.checked; saveA11y(); applyA11y(); });
+    document.getElementById("optMotion").addEventListener("change", function (e) { a11y.motion = e.target.checked; saveA11y(); applyA11y(); });
+    document.getElementById("a11yReset").addEventListener("click", function () { a11y = {}; saveA11y(); applyA11y(); });
+    document.getElementById("btnLang").addEventListener("click", function () { setLang(lang === "zh-TW" ? "zh-CN" : "zh-TW"); });
+    document.getElementById("btnEn").addEventListener("click", function () { setLang(lang === "en" ? "zh-CN" : "en"); });
+
+    console.log("%c13号线 · 内部留档", "font-size:15px;color:#d62828;font-weight:bold");
+    console.log("调度员：周默 / 分机 13");
+    console.log("如遇调度异常，请勿联系任何人。");
+
+    setTimeout(function () {
+      console.log("%c你还在。", "color:#d62828");
+      console.log("末班车还有 13 分钟到站。");
+    }, 13000);
+  }
+  window.addEventListener("load", init);
+})();
+</script>
+
+</body>
+</html>

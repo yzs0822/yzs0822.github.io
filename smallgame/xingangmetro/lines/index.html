@@ -1,0 +1,540 @@
+!DOCTYPE html
+html lang=zh-CN
+head
+meta charset=UTF-8
+meta name=viewport content=width=device-width, initial-scale=1
+title线路查询 - 新港市轨道交通集团title
+meta name=description content=新港市轨道交通线网图、线路查询、换乘信息。
+style
+  {margin0;padding0;box-sizingborder-box}
+  body{font-familyPingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif;background#f4f6f9;color#1f2328;line-height1.65}
+  a{color#0057b8;text-decorationnone}
+  ahover{text-decorationunderline}
+  .wrap{max-width1100px;margin0 auto;padding0 16px}
+  focus-visible{outline3px solid #ffb100;outline-offset2px;border-radius2px}
+  .skip-link{positionabsolute;left-9999px;top0;background#ffb100;color#000;padding10px 16px;z-index9999;font-weight700}
+  .skip-linkfocus{left8px;top8px}
+
+  .topbar{background#00315e;color#b9cde6;font-size13px}
+  .topbar .wrap{displayflex;justify-contentspace-between;align-itemscenter;height32px;gap12px}
+  .topbar .left{white-spacenowrap;overflowhidden;text-overflowellipsis}
+  .tools{displayflex;align-itemscenter;gap6px;white-spacenowrap}
+  .tools button{backgroundnone;border0;color#b9cde6;fontinherit;cursorpointer;padding2px 4px;border-radius2px}
+  .tools buttonhover{color#fff;text-decorationunderline}
+  .tools .sep{color#33557d}
+
+  header{background#0057b8;color#fff}
+  header .wrap{displayflex;align-itemscenter;justify-contentspace-between;padding16px;flex-wrapwrap;gap12px}
+  .logo{displayflex;align-itemscenter;gap12px;font-size20px;font-weight700;letter-spacing.5px}
+  .logo .mark{width36px;height36px;border-radius50%;background#fff;color#0057b8;displayflex;align-itemscenter;justify-contentcenter;font-size17px;font-weight800;flexnone}
+  .logo small{displayblock;font-size11px;font-weight400;color#bcd5f2;letter-spacing2px}
+  .hotline{font-size13px;color#cfe0f5;text-alignright}
+  .hotline strong{displayblock;font-size20px;color#fff;letter-spacing1px}
+
+  nav{background#004a9e;border-top1px solid rgba(255,255,255,.12)}
+  nav .wrap{displayflex;flex-wrapwrap}
+  nav a{color#dbe8f8;padding13px 20px;font-size15px;displayblock}
+  nav ahover{background#0057b8;color#fff;text-decorationnone}
+  nav a.active{background#f4f6f9;color#0057b8;font-weight600}
+
+  .notice{background#fff8e6;border-bottom1px solid #f0e0b8}
+  .notice .wrap{displayflex;gap10px;padding10px 16px;font-size14px;align-itemscenter;flex-wrapwrap}
+  .notice .tag{background#e8a300;color#fff;font-size12px;padding2px 8px;border-radius3px;white-spacenowrap}
+
+  .crumb{background#fff;border-bottom1px solid #e6eaf0;font-size13px;color#667}
+  .crumb .wrap{padding11px 16px}
+  .crumb a{color#667}
+  .crumb span{margin0 6px;color#aab}
+
+  main{padding26px 0 40px}
+  h1{font-size23px;margin-bottom6px}
+  .lede{color#667;font-size14px;margin-bottom20px}
+
+  .map-card{background#fff;border-radius8px;box-shadow0 1px 3px rgba(0,0,0,.07);padding18px;margin-bottom22px;positionrelative;overflowhidden}
+  .map-card h2{font-size16px;margin-bottom12px;color#00315e}
+  .map-box{positionrelative}
+  .map-box svg{displayblock;width100%;heightauto;border-radius4px;background#fbfcfe}
+
+  .legend{list-stylenone;displayflex;flex-wrapwrap;gap8px 22px;margin-top14px;font-size14px}
+  .legend li{displayflex;align-itemscenter;gap8px}
+  .legend .swatch{width22px;height5px;border-radius3px;displayinline-block}
+  .legend-13{color#f4f6f9;cursorpointer;user-selecttext}
+  .legend-13hover,.legend-13focus-within{color#98a2b3}
+  .legend-13 a{colorinherit}
+
+  .line-table{background#fff;border-radius8px;box-shadow0 1px 3px rgba(0,0,0,.07);overflowhidden}
+  .line-table h2{font-size16px;padding16px 18px 6px;color#00315e}
+  table{width100%;border-collapsecollapse;font-size14px}
+  th,td{text-alignleft;padding12px 18px;border-bottom1px solid #eef1f5}
+  th{background#f7f9fc;color#556;font-weight600;font-size13px}
+  trlast-child td{border-bottom0}
+  .pill{displayinline-block;font-size12px;padding2px 9px;border-radius10px;background#e6f4ec;color#0a8f45}
+  .ver{font-size12px;color#aab;margin-top12px;text-alignright}
+  .ver a{color#aab}
+
+  footer{background#00315e;color#8fa9c6;font-size13px;padding28px 0;margin-top20px}
+  footer .wrap{displayflex;justify-contentspace-between;gap16px;flex-wrapwrap}
+  footer a{color#b9cde6}
+  footer .fine{margin-top14px;color#5d7899;font-size12px;border-top1px solid rgba(255,255,255,.08);padding-top14px}
+
+  .ghost{positionabsolute;left-9999px;top0;width1px;height1px;overflowhidden}
+
+  body.underline a{text-decorationunderline}
+  body.reduce-motion ,body.reduce-motion before,body.reduce-motion after{animationnone!important;transitionnone!important;scroll-behaviorauto!important}
+  body.hc{background#000;color#fff}
+  body.hc a{color#ffe600}
+  body.hc .topbar,body.hc header,body.hc nav,body.hc footer{background#000;color#fff;border-color#fff}
+  body.hc nav a,body.hc .tools button,body.hc .hotline,body.hc .hotline strong{color#fff}
+  body.hc nav a.active{background#ffe600;color#000}
+  body.hc .notice{background#111;color#fff;border-color#fff}
+  body.hc .notice .tag{background#ffe600;color#000}
+  body.hc .crumb{background#000;color#fff;border-color#444}
+  body.hc .crumb a{color#ffe600}
+  body.hc .map-card,body.hc .line-table{background#111;color#fff;box-shadownone;border1px solid #fff}
+  body.hc .map-card h2,body.hc .line-table h2{color#ffe600}
+  body.hc .map-box svg{background#000}
+  body.hc th{background#222;color#fff}
+  body.hc td{border-color#444}
+  body.hc .legend-13{color#111}
+  body.hc .legend-13hover{color#ffe600}
+
+  .a11y-panel{positionfixed;top44px;right12px;width300px;max-widthcalc(100vw - 24px);background#fff;color#1f2328;border-radius8px;box-shadow0 10px 30px rgba(0,0,0,.25);z-index9000;overflowhidden;border1px solid #d7dde5}
+  .a11y-panel[hidden]{displaynone}
+  .a11y-head{displayflex;justify-contentspace-between;align-itemscenter;padding12px 14px;background#00315e;color#fff}
+  .a11y-head strong{font-size15px}
+  .a11y-head button{backgroundnone;border0;color#fff;font-size22px;line-height1;cursorpointer;padding0 4px}
+  .a11y-body{padding12px 14px;max-height70vh;overflowauto}
+  .a11y-body fieldset{border0;margin-bottom14px}
+  .a11y-body legend{font-size13px;font-weight700;color#00315e;margin-bottom6px}
+  .a11y-body label{displayblock;font-size14px;padding5px 0;cursorpointer}
+  .a11y-body input{margin-right8px}
+  .a11y-body .row{displayflex;gap6px;flex-wrapwrap}
+  .a11y-body .row button{flex1;min-width56px;padding7px 0;fontinherit;font-size13px;border1px solid #c4cdd8;background#f7f9fc;border-radius4px;cursorpointer}
+  .a11y-body .row button[aria-pressed=true]{background#0057b8;color#fff;border-color#0057b8}
+  .a11y-body .reset{width100%;margin-top6px;padding8px;fontinherit;border1px solid #c4cdd8;background#fff;border-radius4px;cursorpointer;color#555}
+style
+head
+body
+
+a href=#main class=skip-link data-i18n=a11y.skip跳到主要内容a
+
+!-- 13号线图层已于 2019-03-14 按工单 XG-2019-0314 移除，备份：13.html --
+
+div class=topbar
+  div class=wrap
+    span class=left data-i18n=top.left新港市轨道交通集团 · 官方网站span
+    div class=tools
+      button type=button id=btnA11y data-i18n=top.a11y无障碍浏览button
+      span class=sep｜span
+      button type=button id=btnLang繁體button
+      span class=sep｜span
+      button type=button id=btnEnENbutton
+    div
+  div
+div
+
+header
+  div class=wrap
+    div class=logo
+      div class=mark data-i18n=logo.mark港div
+      div
+        span data-i18n=logo.name新港市轨道交通集团span
+        small data-i18n=logo.subXINGANG METROsmall
+      div
+    div
+    div class=hotline
+      span data-i18n=head.hotline服务热线span
+      strong400-013-1314strong
+    div
+  div
+header
+
+nav aria-label=主导航
+  div class=wrap
+    a href=..index.html data-i18n=nav.home首页a
+    a href=index.html class=active data-i18n=nav.lines线路查询a
+    a href=..timetable.html data-i18n=nav.time时刻表a
+    a href=..newsindex.html data-i18n=nav.news新闻公告a
+    a href=..lostfound.html data-i18n=nav.lost失物招领a
+    a href=..stafflogin.html data-i18n=nav.staff员工登录a
+  div
+nav
+
+div class=notice role=status
+  div class=wrap
+    span class=tag data-i18n=notice.tag运营公告span
+    span data-i18n=notice.text线网图数据已更新至 v13.13.14，如有疑问请联系客服。span
+  div
+div
+
+div class=crumb
+  div class=wrap
+    a href=..index.html data-i18n=nav.home首页aspanspanspan data-i18n=crumb.lines线路查询span
+  div
+div
+
+main id=main
+  div class=wrap
+    h1 data-i18n=page.title线网图h1
+    p class=lede data-i18n=page.lede新港市轨道交通线网示意图，点击线路可查看详情。p
+
+    div class=map-card
+      h2 data-i18n=map.title线网示意图h2
+      div class=map-box
+        !-- 线网图 --
+        svg viewBox=0 0 800 480 role=img aria-labelledby=mapTitle mapDesc
+          title id=mapTitle新港市轨道交通线网示意图title
+          desc id=mapDesc包含1号线、2号线、4号线、7号线、10号线。desc
+
+          !-- 网格底纹 --
+          g stroke=#eef2f7 stroke-width=1
+            path d=M0 60H800M0 140H800M0 220H800M0 300H800M0 380H800M0 460H800
+            path d=M80 0V480M200 0V480M320 0V480M440 0V480M560 0V480M680 0V480
+          g
+
+          !-- 13号线残影：2019-03-14 移除 --
+          g opacity=0.09 stroke=#556 stroke-width=4 fill=none stroke-dasharray=7 7
+            path d=M420 120 L480 200 L560 290 L640 380 L700 442
+          g
+          circle cx=700 cy=442 r=4 fill=#556 opacity=0.09
+          text x=712 y=446 font-size=11 fill=#556 opacity=0.09归墟text
+
+          !-- 1号线 --
+          path d=M40 120 H760 stroke=#0057b8 stroke-width=7 fill=none stroke-linecap=round
+          g fill=#fff stroke=#0057b8 stroke-width=3
+            circle cx=40 cy=120 r=6
+            circle cx=180 cy=120 r=5
+            circle cx=320 cy=120 r=5
+            circle cx=420 cy=120 r=7
+            circle cx=560 cy=120 r=5
+            circle cx=680 cy=120 r=5
+            circle cx=760 cy=120 r=6
+          g
+
+          !-- 2号线 --
+          path d=M420 30 V450 stroke=#d62828 stroke-width=7 fill=none stroke-linecap=round
+          g fill=#fff stroke=#d62828 stroke-width=3
+            circle cx=420 cy=30 r=6
+            circle cx=420 cy=120 r=7
+            circle cx=420 cy=240 r=5
+            circle cx=420 cy=310 r=7
+            circle cx=420 cy=450 r=6
+          g
+
+          !-- 4号线 --
+          path d=M90 410 L700 190 stroke=#0a8f45 stroke-width=7 fill=none stroke-linecap=round
+          g fill=#fff stroke=#0a8f45 stroke-width=3
+            circle cx=90 cy=410 r=6
+            circle cx=300 cy=330 r=5
+            circle cx=420 cy=290 r=6
+            circle cx=560 cy=240 r=5
+            circle cx=700 cy=190 r=6
+          g
+
+          !-- 7号线 --
+          path d=M160 50 L640 410 stroke=#e8a300 stroke-width=7 fill=none stroke-linecap=round
+          g fill=#fff stroke=#e8a300 stroke-width=3
+            circle cx=160 cy=50 r=6
+            circle cx=300 cy=150 r=5
+            circle cx=420 cy=240 r=7
+            circle cx=540 cy=330 r=5
+            circle cx=640 cy=410 r=6
+          g
+
+          !-- 10号线 --
+          path d=M60 320 L740 290 stroke=#7b2cbf stroke-width=7 fill=none stroke-linecap=round
+          g fill=#fff stroke=#7b2cbf stroke-width=3
+            circle cx=60 cy=320 r=6
+            circle cx=200 cy=315 r=5
+            circle cx=420 cy=310 r=7
+            circle cx=600 cy=300 r=5
+            circle cx=740 cy=290 r=6
+          g
+
+          !-- 站名 --
+          g font-size=12 fill=#334 font-family=inherit
+            text x=30 y=105新港北站text
+            text x=660 y=105海湾公园text
+            text x=430 y=24北苑text
+            text x=430 y=470南站text
+            text x=70 y=432松林路text
+            text x=700 y=182临港新区text
+            text x=150 y=42大学城text
+            text x=636 y=430凤凰山text
+            text x=40 y=342西码头text
+            text x=712 y=284市民中心text
+            text x=392 y=112中央广场text
+          g
+
+          !-- 隐藏点击区 --
+          a href=13.html aria-label=13号线
+            title13号线title
+            rect x=620 y=380 width=140 height=80 fill=transparent
+          a
+        svg
+      div
+
+      ul class=legend
+        lispan class=swatch style=background#0057b8spanspan data-i18n=l11号线spanli
+        lispan class=swatch style=background#d62828spanspan data-i18n=l22号线spanli
+        lispan class=swatch style=background#0a8f45spanspan data-i18n=l44号线spanli
+        lispan class=swatch style=background#e8a300spanspan data-i18n=l77号线spanli
+        lispan class=swatch style=background#7b2cbfspanspan data-i18n=l1010号线spanli
+        li class=legend-13a href=13.htmlspan class=swatch style=background#556spanspan data-i18n=l1313号线（未开通）spanali
+      ul
+    div
+
+    div class=line-table
+      h2 data-i18n=table.title线路一览h2
+      table
+        thead
+          tr
+            th data-i18n=th.line线路th
+            th data-i18n=th.range起讫站th
+            th data-i18n=th.stations车站数th
+            th data-i18n=th.status状态th
+          tr
+        thead
+        tbody
+          trtd1号线tdtd data-i18n=r1新港北站 — 海湾公园tdtd21tdtdspan class=pill data-i18n=ok正常运营spantdtr
+          trtd2号线tdtd data-i18n=r2北苑 — 南站tdtd17tdtdspan class=pill data-i18n=ok正常运营spantdtr
+          trtd4号线tdtd data-i18n=r4松林路 — 临港新区tdtd15tdtdspan class=pill data-i18n=ok正常运营spantdtr
+          trtd7号线tdtd data-i18n=r7大学城 — 凤凰山tdtd19tdtdspan class=pill data-i18n=ok正常运营spantdtr
+          trtd10号线tdtd data-i18n=r10西码头 — 市民中心tdtd13tdtdspan class=pill data-i18n=ok正常运营spantdtr
+        tbody
+      table
+      div class=ver
+        span data-i18n=ver.text线网数据版本span v13.13.14 · a href=13.html data-i18n=ver.history历史版本a
+      div
+    div
+  div
+main
+
+footer
+  div class=wrap
+    div
+      div data-i18n=foot.org新港市轨道交通集团有限公司div
+      div data-i18n=foot.addr地址：新港市滨海区轨道大道 1 号div
+      divspan data-i18n=head.hotline服务热线span：400-013-1314div
+    div
+    div
+      a href=..index.html data-i18n=nav.home首页a ·
+      a href=index.html data-i18n=nav.lines线路查询a ·
+      a href=..timetable.html data-i18n=nav.time时刻表a ·
+      a href=..lostfound.html data-i18n=nav.lost失物招领a ·
+      a href=..stafflogin.html data-i18n=nav.staff员工登录a
+    div
+  div
+  div class=wrap fine data-i18n=foot.fine
+    © 2024 新港市轨道交通集团有限公司 ｜ 本网站为虚构解谜作品，与任何真实机构、线路、事件无关。
+  div
+footer
+
+a class=ghost href=13.html aria-hidden=true tabindex=-113a
+
+div class=a11y-panel id=a11yPanel role=dialog aria-modal=false aria-label=无障碍设置 hidden
+  div class=a11y-head
+    strong id=a11yTitle无障碍设置strong
+    button type=button id=a11yClose aria-label=关闭×button
+  div
+  div class=a11y-body
+    fieldset
+      legend id=a11yFontSize字体大小legend
+      div class=row role=group
+        button type=button data-zoom=1标准button
+        button type=button data-zoom=1.15大button
+        button type=button data-zoom=1.3特大button
+        button type=button data-zoom=1.5超大button
+      div
+    fieldset
+    fieldset
+      legend id=a11yDisplay显示legend
+      labelinput type=checkbox id=optContrast 高对比度label
+      labelinput type=checkbox id=optUnderline 链接下划线label
+      labelinput type=checkbox id=optMotion 减弱动画label
+    fieldset
+    button type=button class=reset id=a11yReset恢复默认button
+  div
+div
+
+script src=httpscdn.jsdelivr.netnpmopencc-js@1.0.5distumdcn2t.js deferscript
+script
+(function () {
+  use strict;
+  var LK = metro.lang, AK = metro.a11y;
+  var lang = localStorage.getItem(LK)  zh-CN;
+  var a11y = {};
+  try { a11y = JSON.parse(localStorage.getItem(AK)  {})  {}; } catch (e) {}
+
+  var I18N = {
+    en {
+      a11y.skip Skip to main content,
+      top.left Xingang Metro Group · Official Website,
+      top.a11y Accessibility,
+      logo.mark X,
+      logo.name Xingang Metro Group,
+      logo.sub XINGANG METRO,
+      head.hotline Service Hotline,
+      nav.home Home, nav.lines Lines, nav.time Timetable,
+      nav.news News, nav.lost Lost & Found, nav.staff Staff Login,
+      notice.tag Service Notice,
+      notice.text Network map updated to v13.13.14. Contact customer service for questions.,
+      crumb.lines Lines,
+      page.title Network Map,
+      page.lede Schematic map of Xingang Metro. Click a line for details.,
+      map.title Network Schematic,
+      l1 Line 1, l2 Line 2, l4 Line 4, l7 Line 7, l10 Line 10,
+      l13 Line 13 (not in service),
+      table.title Lines Overview,
+      th.line Line, th.range Terminals, th.stations Stations, th.status Status,
+      r1 Xingang North — Bay Park,
+      r2 Beiyuan — South Station,
+      r4 Songlin Road — Lingang New Area,
+      r7 University Town — Phoenix Hill,
+      r10 West Wharf — Civic Center,
+      ok In service,
+      ver.text Network data version,
+      ver.history History,
+      foot.org Xingang Metro Group Co., Ltd.,
+      foot.addr Address No.1 Track Avenue, Binhai District, Xingang,
+      foot.fine © 2024 Xingang Metro Group Co., Ltd. ｜ This site is a fictional puzzle work, unrelated to any real organization, line or event.
+    }
+  };
+
+  function snapshot() {
+    document.querySelectorAll([data-i18n]).forEach(function (el) {
+      if (el.dataset.zhText == null) el.dataset.zhText = el.textContent;
+    });
+  }
+  function renderLanguage() {
+    document.querySelectorAll([data-i18n]).forEach(function (el) {
+      if (el.dataset.zhText != null) el.textContent = el.dataset.zhText;
+    });
+    if (lang === en) {
+      document.documentElement.lang = en;
+      document.querySelectorAll([data-i18n]).forEach(function (el) {
+        var k = el.dataset.i18n;
+        if (I18N.en[k]) el.textContent = I18N.en[k];
+      });
+      document.title = Network Map - Xingang Metro Group;
+    } else if (lang === zh-TW && window.OpenCC) {
+      document.documentElement.lang = zh-Hant;
+      var convert = OpenCC.Converter({ from cn, to tw });
+      toTraditional(document.body, convert);
+      document.title = convert(document.title);
+    } else {
+      document.documentElement.lang = zh-CN;
+    }
+    updateLangButtons();
+  }
+  function toTraditional(root, convert) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode function (n) {
+        var p = n.parentNode;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        var t = p.nodeName;
+        if (t === SCRIPT  t === STYLE  t === NOSCRIPT) return NodeFilter.FILTER_REJECT;
+        if (!n.nodeValue  !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes = [], n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(function (x) { x.nodeValue = convert(x.nodeValue); });
+    root.querySelectorAll([placeholder],[title],[aria-label],[alt]).forEach(function (el) {
+      [placeholder, title, aria-label, alt].forEach(function (a) {
+        if (el.hasAttribute(a)) el.setAttribute(a, convert(el.getAttribute(a)));
+      });
+    });
+  }
+  function updateLangButtons() {
+    var bl = document.getElementById(btnLang), be = document.getElementById(btnEn);
+    if (lang === zh-TW) { bl.textContent = 简体; be.textContent = EN; }
+    else if (lang === en) { bl.textContent = 繁體; be.textContent = 中文; }
+    else { bl.textContent = 繁體; be.textContent = EN; }
+  }
+  function setLang(v) { localStorage.setItem(LK, v); location.reload(); }
+
+  function applyA11y() {
+    document.documentElement.style.zoom = a11y.zoom && a11y.zoom !== 1  a11y.zoom  ;
+    document.body.classList.toggle(hc, !!a11y.contrast);
+    document.body.classList.toggle(underline, !!a11y.underline);
+    document.body.classList.toggle(reduce-motion, !!a11y.motion);
+    document.querySelectorAll([data-zoom]).forEach(function (b) {
+      b.setAttribute(aria-pressed, String(parseFloat(b.dataset.zoom) === (a11y.zoom  1)));
+    });
+    var c = document.getElementById(optContrast), u = document.getElementById(optUnderline), m = document.getElementById(optMotion);
+    if (c) c.checked = !!a11y.contrast;
+    if (u) u.checked = !!a11y.underline;
+    if (m) m.checked = !!a11y.motion;
+  }
+  function saveA11y() { localStorage.setItem(AK, JSON.stringify(a11y)); }
+
+  function localizeA11yPanel() {
+    if (lang === zh-CN) return;
+    var isEn = lang === en, isTw = lang === zh-TW;
+    var map = {
+      a11yTitle { en Accessibility, tw 無障礙設定 },
+      a11yFontSize { en Text size, tw 字體大小 },
+      a11yDisplay { en Display, tw 顯示 },
+      a11yReset { en Reset to default, tw 恢復預設 }
+    };
+    Object.keys(map).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = isEn  map[id].en  (isTw  map[id].tw  el.textContent);
+    });
+    var labels = { optContrast [High contrast, 高對比度], optUnderline [Underline links, 連結底線], optMotion [Reduce motion, 減弱動畫] };
+    Object.keys(labels).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var t = isEn  labels[id][0]  (isTw  labels[id][1]  null);
+      if (!t) return;
+      el.parentNode.childNodes.forEach(function (n) { if (n.nodeType === 3 && n.nodeValue.trim()) n.nodeValue =   + t; });
+    });
+    var z = { 1 [Standard, 標準], 1.15 [Large, 大], 1.3 [Extra large, 特大], 1.5 [Huge, 超大] };
+    document.querySelectorAll([data-zoom]).forEach(function (b) {
+      var v = z[b.dataset.zoom]; if (!v) return;
+      b.textContent = isEn  v[0]  (isTw  v[1]  b.textContent);
+    });
+    var cb = document.getElementById(a11yClose);
+    if (cb) cb.setAttribute(aria-label, isEn  Close  關閉);
+  }
+
+  function init() {
+    snapshot(); renderLanguage(); applyA11y(); localizeA11yPanel();
+    var btnA11y = document.getElementById(btnA11y), panel = document.getElementById(a11yPanel), closeBtn = document.getElementById(a11yClose);
+    btnA11y.addEventListener(click, function () {
+      var show = panel.hidden;
+      panel.hidden = !show;
+      btnA11y.setAttribute(aria-expanded, String(show));
+      if (show) { var f = panel.querySelector(button, input); if (f) f.focus(); }
+    });
+    closeBtn.addEventListener(click, function () {
+      panel.hidden = true; btnA11y.setAttribute(aria-expanded, false); btnA11y.focus();
+    });
+    document.addEventListener(keydown, function (e) {
+      if (e.key === Escape && !panel.hidden) {
+        panel.hidden = true; btnA11y.setAttribute(aria-expanded, false); btnA11y.focus();
+      }
+    });
+    panel.querySelectorAll([data-zoom]).forEach(function (b) {
+      b.addEventListener(click, function () { a11y.zoom = parseFloat(b.dataset.zoom); saveA11y(); applyA11y(); });
+    });
+    document.getElementById(optContrast).addEventListener(change, function (e) { a11y.contrast = e.target.checked; saveA11y(); applyA11y(); });
+    document.getElementById(optUnderline).addEventListener(change, function (e) { a11y.underline = e.target.checked; saveA11y(); applyA11y(); });
+    document.getElementById(optMotion).addEventListener(change, function (e) { a11y.motion = e.target.checked; saveA11y(); applyA11y(); });
+    document.getElementById(a11yReset).addEventListener(click, function () { a11y = {}; saveA11y(); applyA11y(); });
+    document.getElementById(btnLang).addEventListener(click, function () { setLang(lang === zh-TW  zh-CN  zh-TW); });
+    document.getElementById(btnEn).addEventListener(click, function () { setLang(lang === en  zh-CN  en); });
+
+    console.log(%c线网图 v13.13.14, font-size15px;color#0057b8;font-weightbold);
+    console.log(图层数：5);
+    console.log(隐藏图层：1（已锁定）);
+    console.log(提示：线网图右下角有东西。);
+  }
+  window.addEventListener(load, init);
+})();
+script
+
+body
+html
